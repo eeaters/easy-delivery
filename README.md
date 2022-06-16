@@ -1,5 +1,7 @@
 # easy-delivery Project
 
+想学quarkus + 需要写论文 , 那么就一遍学习quarkus一遍写一个论文系统吧
+
 ## 项目主要依赖
 
 | 依赖                                           | 功能      |
