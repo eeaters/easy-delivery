@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>我的门店</title>
+    <base href="http://127.0.0.1:8080/"/>
+    <link rel="stylesheet" href="css/clear.css"/>
+    <link rel="stylesheet" href="css/store.css"/>
+    <link rel="stylesheet" href="css/header.css"/>
+    <link rel="icon" href="./img/ico.ico">
+    <script src="js/jq.js"></script>
+    <script  src="https://kit.fontawesome.com/64d58efce2.js"
+             crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="top clearfix">
+    <div class="inner">
+        <!-- 定一下位置 -->
+        <div class="location">
+        </div>
+
+        <div class="shortcut">
+            <ul>
+                <li class="line">
+                    <a href="javascript:void(0)">你好,Jay</a>
+                </li>
+                <li class="line">
+                    <a href="javascript:void(0)">我的门店</a>
+                </li>
+                <li class="line">
+                    <a href="javascript:void(0)">配送方案</a>
+                </li>
+                <li class="line">
+                    <a href="javascript:void(0)">我的运单</a>
+                </li>
+                <li class="line">
+                    <a href="javascript:void(0)">退出登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="content-wrapper">
+    <div class="introduce-wrapper">
+        <h2 class="guide">
+            <i class="fa fa-commenting fa-2x"></i>
+            <i class="fa-2x">指南:</i>
+        </h2>
+        <p>
+            1. 所有门店在该系统中会有一个门店号
+        </p>
+        <p>
+            2. 门店绑定配送策略时,会在策略下的三方平台中建一个门店,门店号和当前门店号一致
+        </p>
+        <p>
+            3. 门店有订单时,会推送给三方平台进行配送
+        </p>
+        <hr/>
+    </div>
+
+    <div class="table-wrapper">
+
+        <section class="select-wrapper" style="text-align:left; font-size=35px;">
+            <div >
+                <p>
+                    筛选器
+                </p>
+            </div>
+
+            <div>
+                <form action="#">
+                    门店名称: <input type="text" placeholder="请输入门店名称">
+                    <button > 查询 </button>
+                </form>
+            </div>
+        </section>
+        <table>
+            <thead>
+            <tr>
+                <th>门店id</th>
+                <th>门店名称</th>
+                <th>门店经纬度</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {#for store in stores}
+            <tr>
+                <td>{store.storeId}</td>
+                <td>{store.storeName}</td>
+                <td>{store.longitude} , {store.latitude}</td>
+            </tr>
+            {/for}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+<script type="text/javascript">
+</script>
+
+</html>

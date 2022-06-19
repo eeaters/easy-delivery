@@ -1,0 +1,41 @@
+.content-wrapper{
+    margin: 10px 150px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 14px ;
+}
+.introduce-wrapper .guide{
+      text-align: left
+}
+.introduce-wrapper p{
+      line-height: 28px;
+      text-align: left
+}
+
+
+## table-wrapper
+
+.select-wrapper{
+    background-color: #f9fafc;
+    margin-bottom:10px;
+}
+
+.introduce-wrapper input{
+    width:235px;
+    height: 40px;
+    border: 1px solid #00a4ff;
+    border-right: 0;
+    color: #bfbfbf;
+    font-size: 24px;
+    padding-left: 15px;
+}
+table{
+    width: 99%;
+    border: 1px solid #606266;
+}
+th ,td{
+    width: 33%;
+    border: 1px solid #606266;
+}
+
+tr:hover {background-color: #f5f5f5;}

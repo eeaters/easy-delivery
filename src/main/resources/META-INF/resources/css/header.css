@@ -1,0 +1,47 @@
+body{
+    background-color: #f5f7fb;
+}
+
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    display: table;
+    clear:both;
+}
+.top{
+    background-color: #3392f0;
+    font: 14px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+    margin-top : 20px;
+    border-bottom: 1px #ddd solid;
+}
+.top a:hover,
+.city:hover,
+.top .heignlignt
+{
+    color: #f10216;
+}
+.inner{
+    width : 1390px;
+    margin: 0 auto;
+    line-height: 30px;
+}
+.location{
+    float: left;;
+}
+.shortcut{
+    float: right;
+    line-height: 30px;
+
+}
+.shortcut ul li{
+    float: left;
+    line-height: 30px;
+
+}
+.top a , top span{
+    text-decoration: none;
+    color: black;
+}
+.shortcut .line{
+    margin-left: 20px ;
+}
