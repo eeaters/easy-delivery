@@ -35,12 +35,12 @@ body{
 }
 .shortcut ul li{
     float: left;
-    line-height: 30px;
-
+    line-height: 55px;
 }
 .top a , top span{
     text-decoration: none;
     color: black;
+
 }
 .shortcut .line{
     margin-left: 20px ;

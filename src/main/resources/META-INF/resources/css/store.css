@@ -3,9 +3,14 @@
     text-align: center;
     line-height: 50px;
     font-size: 14px ;
+
+}
+.introduce-wrapper{
+    background-color: #f0f0f0;
+    border-bottom:thick dotted #f0f0f0;
 }
 .introduce-wrapper .guide{
-      text-align: left
+    text-align: left
 }
 .introduce-wrapper p{
       line-height: 28px;
@@ -13,29 +18,53 @@
 }
 
 
-## table-wrapper
+
+
+/**
+    筛选器
+*/
 
 .select-wrapper{
-    background-color: #f9fafc;
-    margin-bottom:10px;
+    text-align:left;
+    font-size: 1.1em;
+    width: 100%;
+    margin-bottom: 25px;
+
+}
+.filter p{
+    margin: auto 15px;
+    font-size: 1.5em;
+    height: 80px;
+    line-height: 80px;
 }
 
-.introduce-wrapper input{
-    width:235px;
-    height: 40px;
-    border: 1px solid #00a4ff;
-    border-right: 0;
-    color: #bfbfbf;
-    font-size: 24px;
-    padding-left: 15px;
+.filter form{
+   margin: auto 20px;
+   font-size: 1.2em;
+}
+.filter input {
+    max-width: 200px;
+    width: 100%;
+    background-color: white;
+    height: 25px;
+    border-radius: 20px;
+    padding: 0 0.4rem;
+}
+.filter button{
+    outline-style: none ;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100px;
+    font-size: 1em;
+    background-color: #3392f0;
 }
 table{
     width: 99%;
-    border: 1px solid #606266;
+    border: 1px solid #ebeef5;
 }
 th ,td{
     width: 33%;
-    border: 1px solid #606266;
+    border: 1px solid #ebeef5;
 }
 
 tr:hover {background-color: #f5f5f5;}
