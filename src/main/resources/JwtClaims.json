@@ -1,0 +1,9 @@
+{
+  "iss": "https://example.com/issuer",
+  "upn": "jdoe@quarkus.io",
+  "birthdate": "2001-07-13",
+  "groups": [
+    "User",
+    "Admin"
+  ]
+}

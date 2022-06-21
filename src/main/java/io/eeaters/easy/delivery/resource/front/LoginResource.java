@@ -1,4 +1,4 @@
-package io.eeaters.easy.delivery.resource;
+package io.eeaters.easy.delivery.resource.front;
 
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 public class LoginResource {
 
     @Inject
-    @Location("login")
+    @Location("front/login")
     Template login;
 
     @GET

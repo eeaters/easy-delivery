@@ -1,4 +1,4 @@
-package io.eeaters.easy.delivery.resource;
+package io.eeaters.easy.delivery.resource.front;
 
 import io.eeaters.easy.delivery.entity.model.Store;
 import io.quarkus.qute.Location;
@@ -15,13 +15,14 @@ import javax.ws.rs.core.MediaType;
 public class StoreResource {
 
     @Inject
-    @Location("store")
+    @Location("front/store")
     Template store;
 
     @GET
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance store(@QueryParam("storeName") String storeName) {
-        return store.data("stores", Store.mockList());
+        return store.data("stores", Store.mockList())
+                .data("storeName", storeName);
     }
 
 }

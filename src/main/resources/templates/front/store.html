@@ -64,9 +64,15 @@
                     筛选器
                 </p>
 
-                <form action="#">
-                    门店名称: <input type="text" style="margin-left:25px;" placeholder="请输入门店名称">
-                    <button > 查询 </button>
+                <form action="store">
+                    门店名称: <input type="text"
+                                 name="storeName"
+                                 placeholder="请输入门店名称"
+                                 {#if storeName}
+                                    value="{storeName}"
+                                 {/if}
+                />
+                    <button type="submit"> 查询 </button>
                 </form>
             </div>
         </section>
