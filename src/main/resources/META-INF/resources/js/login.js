@@ -21,16 +21,21 @@ loginBtn.onclick = function(){
         return;
     }
 
-//    var httpRequest = new XMLHttpRequest();
-//    httpRequest.open('GET', 'http://127.0.0.1:8080/home', true);
-//    httpRequest.send();
-//
-//    httpRequest.onreadystatechange = function(){
-//    if(httpRequest.status == 200){
-//            var res = httpRequest.responseText;
-////            localStorage.setItem("res",res);
-////            window.location
-//        }
-//    }
-    window.location.href="home";
+    var userInfo = {
+        "userName" : userNameVal,
+        "password" : passwordVal
+    };
+
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open('POST', 'http://127.0.0.1:8080/login/doLogin', true);
+    httpRequest.setRequestHeader('Content-type','application/json;charset=UTF-8')
+    httpRequest.send(JSON.stringify(userInfo));
+
+    httpRequest.onreadystatechange = function(){
+    if(httpRequest.status == 200 && httpRequest.readyState == 4){
+            var res = httpRequest.responseText;
+            localStorage.setItem("token",JSON.parse(res).result);
+            window.location.href="home";
+        }
+    }
 }

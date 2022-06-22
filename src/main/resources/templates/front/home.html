@@ -43,6 +43,7 @@
 <div id="content">
 
 </div>
+<p id="token"></p>
 </body>
 <script>
     var httpRequest = new XMLHttpRequest();
@@ -50,11 +51,13 @@
     httpRequest.send();
 
     httpRequest.onreadystatechange = function(){
-    if(httpRequest.status == 200){
+    if(httpRequest.status == 200  && httpRequest.readyState == 4){
             var res = httpRequest.responseText;
             var loginBtn = document.getElementById("content");
             loginBtn.innerHTML = res;
         }
     }
+    var token = localStorage.getItem("token");
+    console.log(token);
 </script>
 </html>

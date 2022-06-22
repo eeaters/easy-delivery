@@ -1,5 +1,6 @@
 package io.eeaters.easy.delivery.util;
 
+import io.eeaters.easy.delivery.entity.view.UserLogin;
 import io.smallrye.jwt.build.Jwt;
 import io.smallrye.jwt.build.JwtClaimsBuilder;
 import org.eclipse.microprofile.jwt.Claims;
@@ -9,26 +10,18 @@ import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Base64;
-import java.util.HashMap;
 import java.util.Map;
 
 public interface TokenUtils {
 
-
-    // -Dexec.mainClass=io.eeaters.easy.delivery.util.TokenUtils -Dexec.classpathScope=test
-    static void main(String[] args) throws Exception {
-        System.setProperty("smallrye.jwt.sign.key.location", "secured/privateKey.pem");
-        int i = currentTimeInSecs();
+    static String generateTokenString(UserLogin userLogin) throws Exception {
+        int i = (int) (System.currentTimeMillis() / 1000);
         long expireTime = i + 60 * 60 * 24;
-        String claims = Jwt.upn("jdoe@quarkus.io")
-                .issuer("https://example.com/issuer")
+        return Jwt.upn("eeaters@quarkus.io")
+                .issuer("https://127.0.0.1:8080/issuer")
                 .groups("User")
-                .claim(Claims.birthdate.name(), "2022-06-21")
-                .expiresAt(expireTime)
+                .expiresIn(expireTime)
                 .sign();
-
-        String s = TokenUtils.generateTokenString(claims, new HashMap<>());
-        System.out.println("s = " + s);
     }
 
 

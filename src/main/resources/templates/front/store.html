@@ -21,7 +21,7 @@
                 筛选器
             </p>
 
-            <form>
+            <div>
                 门店名称: <input id="store-name-select" type="text"
                              name="storeName"
                              placeholder="请输入门店名称"
@@ -29,8 +29,8 @@
                                 value="{storeName}"
                              {/if}
                 />
-                <button id="store-query-button"> 查询 </button>
-            </form>
+                <button onclick="storeSearch()"> 查询 </button>
+            </div>
         </div>
     </section>
     <table>
