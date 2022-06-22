@@ -16,5 +16,21 @@ var loginBtn = document.getElementById("login");
 loginBtn.onclick = function(){
     var userNameVal = document.getElementById("userName").value;
     var passwordVal = document.getElementById("password").value;
-    alert(userNameVal +" : " + passwordVal)
+    if(userNameVal == null || userNameVal == '' ){
+        alert("请输入用户名");
+        return;
+    }
+
+//    var httpRequest = new XMLHttpRequest();
+//    httpRequest.open('GET', 'http://127.0.0.1:8080/home', true);
+//    httpRequest.send();
+//
+//    httpRequest.onreadystatechange = function(){
+//    if(httpRequest.status == 200){
+//            var res = httpRequest.responseText;
+////            localStorage.setItem("res",res);
+////            window.location
+//        }
+//    }
+    window.location.href="home";
 }

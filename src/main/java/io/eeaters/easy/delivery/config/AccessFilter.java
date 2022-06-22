@@ -12,11 +12,11 @@ public class AccessFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
-        String path = containerRequestContext.getUriInfo().getPath();
-        MultivaluedMap<String, String> headers = containerRequestContext.getHeaders();
-        headers.forEach((k,v)->{
-            System.out.println("k = " + k + " , v = " + v);
-        });
-        System.out.println("path = " + path);
+//        String path = containerRequestContext.getUriInfo().getPath();
+//        MultivaluedMap<String, String> headers = containerRequestContext.getHeaders();
+//        headers.forEach((k,v)->{
+//            System.out.println("k = " + k + " , v = " + v);
+//        });
+//        System.out.println("path = " + path);
     }
 }

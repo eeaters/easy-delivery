@@ -2,6 +2,7 @@ package io.eeaters.easy.delivery.resource.front;
 
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
+import io.quarkus.qute.TemplateInstance;
 import io.smallrye.mutiny.Uni;
 
 import javax.inject.Inject;
@@ -22,5 +23,6 @@ public class LoginResource {
     public Uni<String> get() {
         return login.instance().createUni();
     }
+
 
 }

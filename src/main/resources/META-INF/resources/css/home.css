@@ -45,3 +45,10 @@ body{
 .shortcut .line{
     margin-left: 20px ;
 }
+
+#content{
+    margin: 10px 150px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 14px ;
+}
