@@ -13,7 +13,7 @@ public class ChannelAccountResourceT extends GreetingResourceTest{
     @Test
     public void create() {
         ChannelAccount channelAccount = new ChannelAccount();
-        channelAccount.id = 2L;
+        channelAccount.setId(2L);
         channelAccount.setChannel("shunfeng");
         channelAccount.setAppKey("342");
 

@@ -1,0 +1,71 @@
+<div class="introduce-wrapper">
+    <h2 class="guide">
+        <i class="fa fa-commenting fa-2x"></i>
+        <i class="fa-2x">指南:</i>
+    </h2>
+    <p>
+        运单信息
+    </p>
+</div>
+<hr/>
+<div class="table-wrapper">
+    <section class="select-wrapper clearfix">
+        <div class="filter">
+            <p>
+                筛选器
+            </p>
+
+            <div>
+                运单号: <input id="delivery-id-select" type="text"
+                             name="id"
+                             placeholder="请输入运单号"
+                             {#if id}
+                             value="{id}"
+                             {/if}
+                />
+                运单号: <input id="order-id-select" type="text"
+                            name="orderId"
+                            placeholder="请输入订单号"
+                            {#if orderId}
+                            value="{orderId}"
+                            {/if}
+                />
+                <button onclick="deliverySearch()"> 查询 </button>
+            </div>
+        </div>
+    </section>
+    <div class="table-six">
+        <table>
+            <thead>
+            <tr>
+                <th>运单id</th>
+                <th>订单id</th>
+                <th>收货人经纬度</th>
+                <th>收货人详细地址</th>
+                <th>收货人联系方式</th>
+                <th>配送状态</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {#for l in list}
+            <tr>
+                <td>{l.id}</td>
+                <td>{l.orderId}</td>
+                <td>{l.destLongitude} , {l.destLatitude}</td>
+                <td>{l.destAddress} </td>
+                <td>{l.destUser} : {l.destPhone} </td>
+                {#if l.status == 0}
+                    <td>已接单</td>
+                {/if}
+                {#if l.status == 1}
+                    <td>已推送</td>
+                {/if}
+            </tr>
+            {/for}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

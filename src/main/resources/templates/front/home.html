@@ -5,10 +5,10 @@
     <title>我的门店</title>
     <base href="http://127.0.0.1:8080/"/>
     <link rel="stylesheet" href="css/clear.css"/>
-    <link rel="stylesheet" href="css/store.css"/>
+    <link rel="stylesheet" href="css/query.css"/>
     <link rel="stylesheet" href="css/home.css"/>
     <link rel="icon" href="./img/ico.ico">
-    <script src="js/store.js"></script>
+    <script src="js/search.js"></script>
     <script  src="https://kit.fontawesome.com/64d58efce2.js"
              crossorigin="anonymous"></script>
 </head>
@@ -25,13 +25,13 @@
                     <a href="javascript:void(0)">你好,Jay</a>
                 </li>
                 <li class="line">
-                    <a href="javascript:void(0)">我的门店</a>
+                    <a onclick="storeJump()" href="javascript:void(0)">我的门店</a>
                 </li>
                 <li class="line">
-                    <a href="javascript:void(0)">配送方案</a>
+                    <a onclick="strategyJump()" href="javascript:void(0)">配送方案</a>
                 </li>
                 <li class="line">
-                    <a href="javascript:void(0)">我的运单</a>
+                    <a onclick="deliveryJump()" href="javascript:void(0)">我的运单</a>
                 </li>
                 <li class="line">
                     <a id="exit" href="login">退出登录</a>
