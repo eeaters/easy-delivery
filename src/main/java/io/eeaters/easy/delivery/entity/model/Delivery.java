@@ -1,6 +1,7 @@
 package io.eeaters.easy.delivery.entity.model;
 
-import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

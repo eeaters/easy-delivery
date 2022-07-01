@@ -24,7 +24,7 @@ public class GreetingResource {
      */
     @GET
     @Path("userList")
-    public Uni<List<User>> userList() {
+    public List<User> userList() {
         return User.listAll();
     }
 

@@ -4,6 +4,7 @@ import io.eeaters.easy.delivery.entity.view.BaseResponse;
 import io.eeaters.easy.delivery.entity.view.UserLogin;
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
+import io.quarkus.qute.TemplateInstance;
 import io.smallrye.mutiny.Uni;
 
 import javax.inject.Inject;
@@ -24,22 +25,22 @@ public class LoginResource {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public Uni<String> get() {
-        return login.instance().createUni();
+    public TemplateInstance get() {
+        return login.instance();
     }
 
 
     @POST
     @Path("/doLogin")
     @Produces(MediaType.APPLICATION_JSON)
-    public Uni<BaseResponse<String>> login(UserLogin userLogin) throws Exception {
-        return Uni.createFrom().item(BaseResponse.success(generateTokenString(userLogin)));
+    public BaseResponse<String> login(UserLogin userLogin) throws Exception {
+        return BaseResponse.success(generateTokenString(userLogin));
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("logout")
-    public Uni<String> logout() {
+    public String logout() {
         return null;
     }
 }

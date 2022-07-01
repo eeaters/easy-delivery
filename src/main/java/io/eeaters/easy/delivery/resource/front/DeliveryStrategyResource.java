@@ -24,18 +24,14 @@ public class DeliveryStrategyResource {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public Uni<TemplateInstance> strategy(@QueryParam("name") String name) {
-        Uni<List<DeliveryStrategy>> listUni = null;
+    public TemplateInstance strategy(@QueryParam("name") String name) {
+        List<DeliveryStrategy> list = null;
         if (StringUtil.isNullOrEmpty(name)) {
-            listUni = DeliveryStrategy.list("name", name);
+            list = DeliveryStrategy.list("name", name);
         } else {
-            listUni = DeliveryStrategy.listAll();
+            list = DeliveryStrategy.listAll();
         }
-        return listUni.onItem()
-                .transform(list -> {
-                    TemplateInstance strategy = this.strategy.data("list", list).data("name", name);
-                    return strategy;
-                });
+        return this.strategy.data("list", list).data("name", name);
     }
 
     /**
@@ -46,62 +42,49 @@ public class DeliveryStrategyResource {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Uni<BaseResponse<List<DeliveryStrategy>>> list() {
-        Uni<List<DeliveryStrategy>> listUni = DeliveryStrategy.listAll();
-        return listUni.onItem().transform(BaseResponse::success);
+    public BaseResponse<List<DeliveryStrategy>> list() {
+        return BaseResponse.success(DeliveryStrategy.listAll());
     }
 
 
     @GET
     @Path("get/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Blocking
-    public Uni<BaseResponse<DeliveryStrategy>> get(@PathParam("id") Long id) {
-        Uni<DeliveryStrategy> byId = DeliveryStrategy.findById(id);
-        return byId.onItem().transform(BaseResponse::success);
+    public BaseResponse<DeliveryStrategy> get(@PathParam("id") Long id) {
+        return BaseResponse.success(DeliveryStrategy.findById(id));
     }
 
     @POST
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
-    public Uni<BaseResponse<Long>> create(DeliveryStrategy deliveryStrategy) {
-        Uni<DeliveryStrategy> baseUni = deliveryStrategy.persistAndFlush();
-        return baseUni.onItem()
-                .transform(DeliveryStrategy::getId)
-                .onItem()
-                .transform(BaseResponse::success);
+    public BaseResponse<Long> create(DeliveryStrategy deliveryStrategy) {
+        deliveryStrategy.persistAndFlush();
+        return BaseResponse.success(deliveryStrategy.getId());
     }
 
     @POST
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     @Blocking
-    public Uni<BaseResponse<String>> update(DeliveryStrategy deliveryStrategy) {
-        Uni<DeliveryStrategy> byId = DeliveryStrategy.findById(deliveryStrategy.getId());
-        return byId.onItem()
-                .ifNull()
-                .failWith(new RuntimeException("不存在的配送策略"))
-                .onItem()
-                .call(strategy -> {
-                    strategy.setDesc(deliveryStrategy.getDesc());
-                    strategy.setType(deliveryStrategy.getType());
-                    strategy.setTimeoutPeriod(deliveryStrategy.getTimeoutPeriod());
-                    strategy.setName(deliveryStrategy.getName());
-                    strategy.setUpdateUser(deliveryStrategy.getUpdateUser());
-                    return strategy.flush();
-                })
-                .onItem()
-                .transform(strategy -> BaseResponse.success());
+    public BaseResponse<String> update(DeliveryStrategy deliveryStrategy) {
+        DeliveryStrategy strategy = DeliveryStrategy.findById(deliveryStrategy.getId());
+        if (strategy == null) {
+            return null;
+        }
+        strategy.setDesc(deliveryStrategy.getDesc());
+        strategy.setType(deliveryStrategy.getType());
+        strategy.setTimeoutPeriod(deliveryStrategy.getTimeoutPeriod());
+        strategy.setName(deliveryStrategy.getName());
+        strategy.setUpdateUser(deliveryStrategy.getUpdateUser());
+        strategy.persist();
+        return BaseResponse.success();
     }
 
     @POST
     @Path("mapping/create")
-    public Uni<BaseResponse<Long>> createChannelMapping(StrategyChannelMapping channelMapping) {
-        Uni<StrategyChannelMapping> uni = channelMapping.persistAndFlush();
-        return uni.onItem()
-                .transform(StrategyChannelMapping::getChannelId)
-                .onItem()
-                .transform(BaseResponse::success);
+    public BaseResponse<Long> createChannelMapping(StrategyChannelMapping channelMapping) {
+        channelMapping.persistAndFlush();
+        return BaseResponse.success(channelMapping.getId());
     }
 
 }

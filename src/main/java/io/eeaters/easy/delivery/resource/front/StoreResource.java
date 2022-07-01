@@ -26,21 +26,12 @@ public class StoreResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Blocking
-    public Uni<TemplateInstance> store(@QueryParam("name") String name) {
-        Uni<List<Store>> storeListUni = Store.findAll().list();
-        List<Store> storeList = storeListUni.await().indefinitely();
-
-        Uni<List<DeliveryStrategy>> strategyListUni = DeliveryStrategy.findAll().list();
-        List<DeliveryStrategy> strategyList = strategyListUni.await().indefinitely();
-
-        System.out.println("name = " + name);
-        return Uni.createFrom()
-                .item(() -> {
-                    TemplateInstance instance = store.data("storeList", storeList)
-                            .data("strategyList", strategyList)
-                            .data("name", name);
-                    return instance;
-                });
+    public TemplateInstance store(@QueryParam("name") String name) {
+        List<Store> storeList = Store.findAll().list();
+        List<DeliveryStrategy> strategyList = DeliveryStrategy.findAll().list();
+        return store.data("storeList", storeList)
+                .data("strategyList", strategyList)
+                .data("name", name);
 
     }
 
