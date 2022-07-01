@@ -1,5 +1,6 @@
 :toc:
-:toc-title: 腾讯云操作
+:toc-title: 非docker的云部署步骤(腾讯云)
+
 
 == 准备环境
 1. 切换为root权限: `sudo su root`
@@ -57,4 +58,4 @@ mvn quarkus:dev 仅仅适用于本地环境; 服务器上跑还得打包
 
 mvn clean package -U -Dquarkus.package.type=uber-jar
 
-然后java -jar 运行
+然后java -jar 运行target下的jar包
