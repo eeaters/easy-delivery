@@ -12,6 +12,9 @@ public class Store extends PanacheEntityBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id")
+    private Long userId;
+
     @Column(name = "store_name")
     private String storeName;
 
@@ -21,6 +24,8 @@ public class Store extends PanacheEntityBase {
     private String longitude;
 
     private String latitude;
+
+    private String phone;
 
     @Column(name = "create_user")
     private String createUser;
@@ -40,6 +45,14 @@ public class Store extends PanacheEntityBase {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getStoreName() {
@@ -72,6 +85,14 @@ public class Store extends PanacheEntityBase {
 
     public void setStoreCode(String storeCode) {
         this.storeCode = storeCode;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getCreateUser() {

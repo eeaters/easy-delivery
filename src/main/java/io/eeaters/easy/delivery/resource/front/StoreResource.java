@@ -1,10 +1,11 @@
 package io.eeaters.easy.delivery.resource.front;
 
+import io.eeaters.easy.delivery.entity.model.DeliveryStrategy;
 import io.eeaters.easy.delivery.entity.model.Store;
-import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
+import io.smallrye.common.annotation.Blocking;
 import io.smallrye.mutiny.Uni;
 
 import javax.inject.Inject;
@@ -24,15 +25,23 @@ public class StoreResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Blocking
     public Uni<TemplateInstance> store(@QueryParam("name") String name) {
-        Uni<List<Store>> list = Store.findAll()
-                .list();
-        return list.onItem()
-                .transform(stores -> {
-                    TemplateInstance data = store.data("stores", stores)
+        Uni<List<Store>> storeListUni = Store.findAll().list();
+        List<Store> storeList = storeListUni.await().indefinitely();
+
+        Uni<List<DeliveryStrategy>> strategyListUni = DeliveryStrategy.findAll().list();
+        List<DeliveryStrategy> strategyList = strategyListUni.await().indefinitely();
+
+        System.out.println("name = " + name);
+        return Uni.createFrom()
+                .item(() -> {
+                    TemplateInstance instance = store.data("storeList", storeList)
+                            .data("strategyList", strategyList)
                             .data("name", name);
-                    return data;
+                    return instance;
                 });
+
     }
 
 }

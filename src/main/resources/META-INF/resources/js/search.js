@@ -1,32 +1,41 @@
 function storeSearch(){
-    var storeName = document.getElementById("store-name-select").value;
-    get("http://127.0.0.1:8080/store?storeName="+storeName)
+    var name = document.getElementById("store-name-select").value;
+    alert(name);
+    get("/store?name="+name);
 }
 function storeJump(){
-    get("http://127.0.0.1:8080/store")
+    get("/store")
 }
 
 function strategySearch(){
     var name = document.getElementById("strategy-name-select").value;
-    get("http://127.0.0.1:8080/strategy?name="+name)
+    get("/strategy?name="+name)
 }
 
 function strategyJump(){
-    get("http://127.0.0.1:8080/strategy")
+    get("/strategy")
 }
 
 function deliverySearch(){
+    var storeId = document.getElementById("store-id-select").value;
     var deliveryId = document.getElementById("delivery-id-select").value;
     var orderId = document.getElementById("order-id-select").value;
-    get("http://127.0.0.1:8080/delivery?id=" + id + "&orderId=" + orderId);
+    get("/delivery?id=" + id + "&orderId=" + orderId +"&storeId="+storeId);
 }
 function deliveryJump(){
-    get("http://127.0.0.1:8080/delivery");
+    get("/delivery");
+}
+
+function deliveryDetail(obj){
+    var id = obj.previousElementSibling.value;
+    get("/delivery/get?id="+id);
 }
 
 
 function get(url){
- var httpRequest = new XMLHttpRequest();
+
+    url = "http://127.0.0.1:9000" + url;
+    var httpRequest = new XMLHttpRequest();
     httpRequest.open('GET', url, true);
     httpRequest.send();
 

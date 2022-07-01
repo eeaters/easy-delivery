@@ -12,6 +12,12 @@ public class Delivery extends PanacheEntityBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id")
+    private Long userId;
+
+    @Column(name = "store_id")
+    private Long storeId;
+
     @Column(name = "order_id")
     private String orderId;
 
@@ -65,6 +71,22 @@ public class Delivery extends PanacheEntityBase {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
 
     public String getOrderId() {

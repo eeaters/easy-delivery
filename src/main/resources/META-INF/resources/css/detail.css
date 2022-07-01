@@ -1,0 +1,21 @@
+.li-three li{
+    float: left;
+    line-height: 55px;
+    width: 33%;
+}
+
+.li-three li .topic{
+    font-size: 1.4em;
+    margin-left: 12px;
+    color: #b4bccc;
+}
+
+
+.detail-li-wrapper ,
+.delivery-dest-wrapper,
+.delivery-info-wrapper{
+    margin-top: 40px;
+}
+.back-wrapper{
+    margin-top: 50px;
+}

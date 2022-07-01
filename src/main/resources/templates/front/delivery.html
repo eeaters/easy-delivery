@@ -3,9 +3,6 @@
         <i class="fa fa-commenting fa-2x"></i>
         <i class="fa-2x">指南:</i>
     </h2>
-    <p>
-        运单信息
-    </p>
 </div>
 <hr/>
 <div class="table-wrapper">
@@ -16,34 +13,43 @@
             </p>
 
             <div>
+                门店id: <input id="store-id-select" type="text"
+                            name="storeId"
+                            placeholder="请输入运单号"
+                            {#if storeId}
+                            value="{storeId}"
+                            {/if}
+                /> &nbsp;&nbsp;&nbsp;
                 运单号: <input id="delivery-id-select" type="text"
                              name="id"
                              placeholder="请输入运单号"
                              {#if id}
                              value="{id}"
                              {/if}
-                />
+                />&nbsp;&nbsp;&nbsp;
                 运单号: <input id="order-id-select" type="text"
                             name="orderId"
                             placeholder="请输入订单号"
                             {#if orderId}
                             value="{orderId}"
                             {/if}
-                />
+                />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button onclick="deliverySearch()"> 查询 </button>
             </div>
         </div>
     </section>
-    <div class="table-six">
+    <div class="table-eight">
         <table>
             <thead>
             <tr>
+                <th>门店id</th>
                 <th>运单id</th>
                 <th>订单id</th>
                 <th>收货人经纬度</th>
                 <th>收货人详细地址</th>
                 <th>收货人联系方式</th>
                 <th>配送状态</th>
+                <th>操作</th>
             </tr>
             </thead>
 
@@ -51,6 +57,7 @@
             {#for l in list}
             <tr>
                 <td>{l.id}</td>
+                <td>{l.storeId}</td>
                 <td>{l.orderId}</td>
                 <td>{l.destLongitude} , {l.destLatitude}</td>
                 <td>{l.destAddress} </td>
@@ -61,6 +68,11 @@
                 {#if l.status == 1}
                     <td>已推送</td>
                 {/if}
+
+                <td>
+                    <input type="hidden" value="{l.id}">
+                    <a onclick="deliveryDetail(this)" href="javascript:void(0)">查看</a>
+                </td>
             </tr>
             {/for}
             </tbody>

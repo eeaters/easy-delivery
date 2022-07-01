@@ -1,0 +1,37 @@
+<p style="font-size:1.6em; background-color: #f0f0f0;border-bottom:thick dotted #f0f0f0;">
+    运单详情
+</p>
+
+<div class="detail">
+    <div class="detail-li-wrapper">
+        <ul class="li-three clearfix">
+            <li>
+                <i class="topic">运单编号:</i> &nbsp;&nbsp; {delivery.id}
+            </li>
+            <li>
+                <i class="topic">门店编号:</i> &nbsp;&nbsp; {delivery.storeId}
+            </li>
+            <li>
+                <i class="topic">取货地址:</i> &nbsp;&nbsp;测试地址
+            </li>
+        </ul>
+    </div>
+    <div class="delivery-dest-wrapper">
+        <ul class="li-three clearfix">
+            <li>  <i class="topic">收货人名称:</i> &nbsp;&nbsp; {delivery.destUser}</li>
+            <li><i class="topic">收货人联系方式:</i> &nbsp;&nbsp; {delivery.destPhone} </li>
+            <li><i class="topic">收货人地址:</i> &nbsp;&nbsp; {delivery.destAddress}</li>
+        </ul>
+    </div>
+    <div class="delivery-info-wrapper">
+        <ul class="li-three clearfix">
+            <li> <i class="topic">订单金额:</i>  &nbsp;&nbsp; {delivery.orderPrice}</li>
+            <li><i class="topic">配送支付金额:</i>  &nbsp;&nbsp; {delivery.deliveryFeePrice}</li>
+            <li><i class="topic">小费金额:</i>  &nbsp;&nbsp; {delivery.tipFeePrice}</li>
+        </ul>
+    </div>
+
+    <div class="back-wrapper clearfix">
+        <button onclick="deliveryJump()"> 返回 </button>
+    </div>
+</div>

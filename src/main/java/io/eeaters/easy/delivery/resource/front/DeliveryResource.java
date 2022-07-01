@@ -10,7 +10,9 @@ import io.smallrye.mutiny.Uni;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,14 +25,16 @@ public class DeliveryResource {
 
     /**
      * 框架不熟,先写一下功能
+     *
      * @param orderId
      * @param id
      * @return
      */
     @GET
-    public Uni<TemplateInstance> delivery(@QueryParam("orderId") String orderId,
+    public Uni<TemplateInstance> delivery(@QueryParam("storeId") String storeId,
+                                          @QueryParam("orderId") String orderId,
                                           @QueryParam("id") Long id) {
-        Uni<List<Delivery>> uni ;
+        Uni<List<Delivery>> uni;
         if (id != null && id > 0) {
             Uni<Delivery> baseUni = Delivery.findById(id);
             uni = baseUni.onItem()
@@ -43,14 +47,34 @@ public class DeliveryResource {
                     });
         } else if (!StringUtil.isNullOrEmpty(orderId)) {
             uni = Delivery.find("#Delivery.getOrderId", orderId).list();
-        }else{
+        } else {
             uni = Delivery.findAll().list();
         }
         return uni.onItem()
                 .transform(list -> {
-                    TemplateInstance strategy = this.delivery.data("list", list).data("orderId", orderId).data("id", id);
+                    TemplateInstance strategy = this.delivery.data("list", list)
+                            .data("orderId", orderId)
+                            .data("id", id)
+                            .data("storeId", storeId);
                     return strategy;
                 });
 
+    }
+
+
+    @Inject
+    @Location("front/detail/delivery-detail")
+    Template deliveryDetailTemplate;
+
+    @GET
+    @Path("get")
+    @Produces(MediaType.TEXT_HTML)
+    public Uni<TemplateInstance> get(@QueryParam("id") Long id) {
+        Uni<Delivery> baseUni = Delivery.findById(id);
+        return baseUni.onItem()
+                .transform(deliveryDetail -> {
+                    TemplateInstance delivery = deliveryDetailTemplate.data("delivery", deliveryDetail);
+                    return delivery;
+                });
     }
 }

@@ -11,6 +11,9 @@ public class DeliveryStrategy extends PanacheEntityBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id")
+    private Long userId;
+
     private String name;
 
     @Column(name = "`desc`")
@@ -32,6 +35,14 @@ public class DeliveryStrategy extends PanacheEntityBase {
 
     @Column(name = "update_user")
     private String updateUser;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public String getName() {
         return name;
