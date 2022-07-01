@@ -33,7 +33,7 @@
             </div>
         </div>
     </section>
-    <div class="table-five">
+    <div class="table-six">
         <table>
             <thead>
             <tr>
@@ -42,6 +42,7 @@
                 <th>门店经纬度</th>
                 <th>门店联系电话</th>
                 <th>配送策略</th>
+                <th>操作</th>
             </tr>
             </thead>
 
@@ -49,21 +50,23 @@
             {#for store in storeList}
             <tr>
                 <td>{store.id}</td>
-                <td>{store.storeName}</td>
+                <td>
+                    <input type="input" value="{store.storeName}"/></td>
                 <td>{store.longitude} , {store.latitude}</td>
-                <td>{store.phone}</td>
+                <td>
+                    <input type="input" value="{store.phone}"/>
+                </td>
                 <td>
                     <input type="hidden" value="{store.id}">
                     <select>
                         {#for strategy in strategyList}
                         <option valu=""> --- </option>
                         <option value="{strategy.id}"> {strategy.name} </option>
-                        <option value="strategyId"> 价格优先->美团-蜂鸟 </option>
-                        <option value="strategyId"> 短距离->达达,长距离->美团</option>
                         {/for}
                     </select>
-                    <button> 确认绑定 </button>
+
                 </td>
+                <td>   <button> 确认 </button></td>
             </tr>
             {/for}
             </tbody>

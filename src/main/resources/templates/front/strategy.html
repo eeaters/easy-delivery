@@ -33,13 +33,14 @@
             </div>
         </div>
     </section>
-    <div class="table-three">
+    <div class="table-four">
         <table>
             <thead>
             <tr>
                 <th>策略id</th>
                 <th>策略名称</th>
                 <th>策略描述</th>
+                <th>详情</th>
             </tr>
             </thead>
 
@@ -49,6 +50,9 @@
                 <td>{l.id}</td>
                 <td>{l.name}</td>
                 <td>{l.desc}</td>
+                <td>
+                    <button onclick="storeSearch()"> 详情 </button>
+                </td>
             </tr>
             {/for}
             </tbody>

@@ -7,9 +7,6 @@ import io.netty.util.internal.StringUtil;
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
-import io.smallrye.common.annotation.Blocking;
-import io.smallrye.mutiny.Uni;
-
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -25,12 +22,7 @@ public class DeliveryStrategyResource {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance strategy(@QueryParam("name") String name) {
-        List<DeliveryStrategy> list = null;
-        if (StringUtil.isNullOrEmpty(name)) {
-            list = DeliveryStrategy.list("name", name);
-        } else {
-            list = DeliveryStrategy.listAll();
-        }
+        List<DeliveryStrategy> list = DeliveryStrategy.listAll();
         return this.strategy.data("list", list).data("name", name);
     }
 
@@ -65,7 +57,6 @@ public class DeliveryStrategyResource {
     @POST
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
-    @Blocking
     public BaseResponse<String> update(DeliveryStrategy deliveryStrategy) {
         DeliveryStrategy strategy = DeliveryStrategy.findById(deliveryStrategy.getId());
         if (strategy == null) {

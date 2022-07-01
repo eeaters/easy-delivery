@@ -1,0 +1,60 @@
+:toc:
+:toc-title: 腾讯云操作
+
+== 准备环境
+1. 切换为root权限: `sudo su root`
+
+=== JDK 18
+
+- https://blog.csdn.net/peichaohang/article/details/119888252[apt安装]
+- https://blog.csdn.net/zynaln/article/details/124369473[ubuntu安装jdk18]
+
+apt的版本最高是17 ,采用wget进行安装;
+
+|====
+| 步骤 | 功能
+
+| 1.下载tar包 | wget jdk官方的tar.gz包
+| 2. 解压 | tar -zxvf tar.gz
+| 3. 配置环境变量 | vi /etc/profile
+| 4. 配置生效| source /etc/profile
+| 5. 测试 | java -version
+|====
+
+----
+export JAVA_HOME=/usr/java/jdk-18.0.1.1
+export CLASSPATH=${JAVA_HOME}/lib:$CLASSPATH
+export PATH=$PATH:${JAVA_HOME}/bin
+----
+
+=== maven
+
+maven同样操作wget命令来进行安装
+|====
+| 步骤 | 功能
+
+| 1. 下载tar包 | wget maven官方的tar.gz包
+| 2. 解压 | tar -zxvf  apache-maven-3.8.6-bin.tar.gz
+| 3. 配置环境变量 | 修改/etc/profile文件,添加环境变量
+| 4. 配置生效 | source /etc/profile
+| 5. 查看版本 | mvn -v
+|====
+
+----
+export MAVEN_HOME=/usr/maven/apache-maven-3.8.6
+export PATH=$PATH:${MAVEN_HOME}/bin
+----
+
+=== git
+- https://www.liaoxuefeng.com/wiki/896043488029600/896067074338496[廖雪峰的官方网站]
+
+sudo apt-get install git
+
+因为不在linux上开发, 仅用来运行项目, 所以直接git clone https://*** 将项目搞到服务器上
+
+== 运行项目
+mvn quarkus:dev 仅仅适用于本地环境; 服务器上跑还得打包
+
+mvn clean package -U -Dquarkus.package.type=uber-jar
+
+然后java -jar 运行

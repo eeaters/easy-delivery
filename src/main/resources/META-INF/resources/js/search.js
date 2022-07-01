@@ -34,7 +34,7 @@ function deliveryDetail(obj){
 
 function get(url){
 
-    url = "http://127.0.0.1:9000" + url;
+    url = "http://121.4.50.38:9000" + url;
     var httpRequest = new XMLHttpRequest();
     httpRequest.open('GET', url, true);
     httpRequest.send();

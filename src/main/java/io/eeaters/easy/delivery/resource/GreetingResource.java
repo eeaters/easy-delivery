@@ -2,7 +2,6 @@ package io.eeaters.easy.delivery.resource;
 
 import io.eeaters.easy.delivery.client.BaiduClient;
 import io.eeaters.easy.delivery.entity.model.User;
-import io.smallrye.common.annotation.Blocking;
 import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import javax.ws.rs.GET;
@@ -30,7 +29,6 @@ public class GreetingResource {
 
     @GET
     @Path("geocoder")
-    @Blocking
     public Uni<String> geocoder(@QueryParam("location") String location) {
         return Uni.createFrom().completionStage(baiduClient.geocoder("json", location));
     }
