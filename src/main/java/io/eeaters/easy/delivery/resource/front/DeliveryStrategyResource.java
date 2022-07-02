@@ -1,9 +1,10 @@
 package io.eeaters.easy.delivery.resource.front;
 
+import io.eeaters.easy.delivery.entity.model.ChannelAccount;
 import io.eeaters.easy.delivery.entity.model.DeliveryStrategy;
 import io.eeaters.easy.delivery.entity.model.StrategyChannelMapping;
 import io.eeaters.easy.delivery.entity.view.BaseResponse;
-import io.netty.util.internal.StringUtil;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
@@ -25,6 +26,19 @@ public class DeliveryStrategyResource {
         List<DeliveryStrategy> list = DeliveryStrategy.listAll();
         return this.strategy.data("list", list).data("name", name);
     }
+
+    @Inject
+    @Location("front/add/strategyAdd")
+    Template strategyAdd;
+
+    @GET
+    @Path("addPage")
+    public TemplateInstance strategyAdd() {
+        List<ChannelAccount> accounts = ChannelAccount.findAll().list();
+        return strategyAdd.instance().data("accounts", accounts);
+    }
+
+
 
     /**
      * 策略列表

@@ -9,6 +9,12 @@ public class BaseResponse <T>{
     private T result;
 
 
+    public static BaseResponse<String> failure(String code, String message) {
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setCode(code);
+        baseResponse.setMessage(message);
+        return baseResponse;
+    }
     public static BaseResponse<String> success() {
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setCode("200");

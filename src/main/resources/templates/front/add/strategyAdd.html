@@ -1,0 +1,27 @@
+<p style="font-size:1.6em; background-color: #f0f0f0;border-bottom:thick dotted #f0f0f0;">
+    新增策略
+</p>
+
+
+<div class="detail">
+    <div class="detail-li-wrapper li-two">
+        <ul>
+            <li> <i class="topic">方案名称:</i> &nbsp;&nbsp; <input type="text" id="storeCode" placeholder="方案名称"></li>
+            <li>  <i class="topic">方案备注:</i> &nbsp;&nbsp; <input type="textarea" id="storeName" placeholder="最多50个字"></li>
+        </ul>
+    </div>
+    <div class="delivery-info-wrapper">
+        <select>
+            <option value=""> ---- </option>
+            {#for account in accounts}
+                <option value="{account.id}"> {account.name}</option>
+            {/for}
+        </select>
+
+    </div>
+
+    <div class="back-wrapper clearfix">
+        <button onclick="storeAdd()"> 确认-还没好 </button>
+        <button onclick="strategyJump()"> 返回 </button>
+    </div>
+</div>

@@ -3,6 +3,7 @@ package io.eeaters.easy.delivery.entity.model;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity(name = "store")
@@ -16,27 +17,32 @@ public class Store extends PanacheEntityBase {
     private Long userId;
 
     @Column(name = "store_name")
+    @NotBlank(message = "门店名称不能为空")
     private String storeName;
 
     @Column(name = "store_code")
+    @NotBlank(message = "门店编号不能为空")
     private String storeCode;
 
+    @NotBlank(message = "门店经度不能为空")
     private String longitude;
 
+    @NotBlank(message = "门店纬度不能为空")
     private String latitude;
 
+    @NotBlank(message = "门店电话不能为空")
     private String phone;
 
-    @Column(name = "create_user")
+    @Column(name = "create_user",updatable = false)
     private String createUser;
 
-    @Column(name = "create_time")
+    @Column(name = "create_time", insertable = false, updatable = false)
     private LocalDateTime createTime;
 
     @Column(name = "update_user")
     private String updateUser;
 
-    @Column(name = "update_time")
+    @Column(name = "update_time", insertable = false, updatable = false)
     private LocalDateTime updateTime;
 
     public Long getId() {

@@ -1,10 +1,18 @@
+.li-two li{
+    float: left;
+    line-height: 55px;
+    width: 50%;
+}
 .li-three li{
     float: left;
     line-height: 55px;
     width: 33%;
 }
 
-.li-three li .topic{
+
+
+.li-three li .topic,
+.li-two li .topic{
     font-size: 1.4em;
     margin-left: 12px;
     color: #b4bccc;

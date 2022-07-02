@@ -30,6 +30,7 @@
                              {/if}
                 />
                 <button onclick="storeSearch()"> 查询 </button>
+                <button onclick="jumpStoreAddPage()"> 新增门店 </button>
             </div>
         </div>
     </section>
@@ -51,22 +52,17 @@
             <tr>
                 <td>{store.id}</td>
                 <td>
-                    <input type="input" value="{store.storeName}"/></td>
+                   {store.storeName}
                 <td>{store.longitude} , {store.latitude}</td>
                 <td>
-                    <input type="input" value="{store.phone}"/>
+                    {store.phone}
                 </td>
                 <td>
-                    <input type="hidden" value="{store.id}">
-                    <select>
-                        {#for strategy in strategyList}
-                        <option valu=""> --- </option>
-                        <option value="{strategy.id}"> {strategy.name} </option>
-                        {/for}
-                    </select>
-
+                    还没有做好绑定
                 </td>
-                <td>   <button> 确认 </button></td>
+                <td>
+                    <a href="javascript:void(0)">编辑-暂未支持</a>
+                </td>
             </tr>
             {/for}
             </tbody>

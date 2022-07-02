@@ -29,7 +29,8 @@
                              value="{name}"
                              {/if}
                 />
-                <button onclick="storeSearch()"> 查询 </button>
+                <button onclick="strategySearch()"> 查询 </button>
+                <button onclick="strategyAddJump()"> 新增 </button>
             </div>
         </div>
     </section>
@@ -51,7 +52,7 @@
                 <td>{l.name}</td>
                 <td>{l.desc}</td>
                 <td>
-                    <button onclick="storeSearch()"> 详情 </button>
+                    <a href="javascript:void(0)">编辑-暂未支持</a>
                 </td>
             </tr>
             {/for}

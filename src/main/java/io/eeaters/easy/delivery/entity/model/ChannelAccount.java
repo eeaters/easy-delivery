@@ -16,6 +16,8 @@ public class ChannelAccount extends PanacheEntityBase {
 
     private String channel;
 
+    private String name;
+
     @Column(name = "app_key")
     private String appKey;
 
@@ -58,6 +60,15 @@ public class ChannelAccount extends PanacheEntityBase {
                 ", updateTime=" + updateTime +
                 ", updateUser='" + updateUser + '\'' +
                 '}';
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getChannel() {

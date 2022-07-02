@@ -80,6 +80,13 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-smallrye-jwt-build</artifactId>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.quarkus/quarkus-hibernate-validator -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-validator</artifactId>
+    </dependency>
+
   </dependencies>
   <build>
     <plugins>
