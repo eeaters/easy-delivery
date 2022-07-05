@@ -1,6 +1,5 @@
-package io.eeaters.easy.delivery.resource.front;
+package io.eeaters.easy.delivery.resource;
 
-import io.eeaters.easy.delivery.entity.model.Store;
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
@@ -12,7 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Path("home")
-public class HomeResource {
+public class FrontHomeResource {
 
     @Inject
     @Location("front/home")

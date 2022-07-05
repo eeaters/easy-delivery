@@ -1,5 +1,7 @@
 package io.eeaters.easy.delivery.entity.view;
 
+import io.eeaters.easy.delivery.exception.ResultCodeEnum;
+
 public class BaseResponse <T>{
 
     private String code;
@@ -8,6 +10,9 @@ public class BaseResponse <T>{
 
     private T result;
 
+    public static BaseResponse<String> failure(ResultCodeEnum codeEnum) {
+        return failure(codeEnum.getCode(), codeEnum.getMessage());
+    }
 
     public static BaseResponse<String> failure(String code, String message) {
         BaseResponse baseResponse = new BaseResponse();

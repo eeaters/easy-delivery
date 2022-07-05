@@ -1,17 +1,21 @@
 package io.eeaters.easy.delivery.entity.view;
 
+import javax.validation.constraints.NotBlank;
+
 public class UserLogin {
 
-    private String userName;
+    @NotBlank(message = "手机号不能为空")
+    private String phone;
 
+    @NotBlank(message = "密码不能为空")
     private String password;
 
-    public String getUserName() {
-        return userName;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getPassword() {
@@ -25,7 +29,7 @@ public class UserLogin {
     @Override
     public String toString() {
         return "UserLogin{" +
-                "userName='" + userName + '\'' +
+                "phone='" + phone + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

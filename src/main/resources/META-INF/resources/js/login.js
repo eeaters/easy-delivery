@@ -14,28 +14,38 @@ sign_in_btn.addEventListener("click", () => {
 
 var loginBtn = document.getElementById("login");
 loginBtn.onclick = function(){
-    var userNameVal = document.getElementById("userName").value;
+    var phoneVal = document.getElementById("phone").value;
     var passwordVal = document.getElementById("password").value;
-    if(userNameVal == null || userNameVal == '' ){
-        alert("请输入用户名");
+    if(phoneVal == null || phoneVal == '' ){
+        alert("请输入手机号");
+        return;
+    }
+    if(passwordVal == null || passwordVal == ''){
+        alert("请输入密码");
         return;
     }
 
     var userInfo = {
-        "userName" : userNameVal,
+        "phone" : phoneVal,
         "password" : passwordVal
     };
 
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open('POST', 'http://121.4.50.38:9000/login/doLogin', true);
+    httpRequest.open('POST', 'http://127.0.0.1:9000/login/doLogin', true);
     httpRequest.setRequestHeader('Content-type','application/json;charset=UTF-8')
     httpRequest.send(JSON.stringify(userInfo));
 
     httpRequest.onreadystatechange = function(){
     if(httpRequest.status == 200 && httpRequest.readyState == 4){
             var res = httpRequest.responseText;
-            localStorage.setItem("token",JSON.parse(res).result);
-            window.location.href="home";
+            var statusCode = JSON.parse(res).code;
+            if(statusCode == '200'){
+                localStorage.setItem("token",JSON.parse(res).result);
+                window.location.href="home";
+            }else {
+                 alert(JSON.parse(res).message)
+                 window.location.href="login";
+            }
         }
     }
 }

@@ -2,6 +2,8 @@ package io.eeaters.easy.delivery.exception;
 
 public enum ResultCodeEnum {
 
+    LOGIN_ERROR("300","用户登录未登录或登录已失效"),
+
     PARAM_EXCEPTION("400", "校验失败异常"),
     LOGIC_EXCEPTION("401", "逻辑异常"),
 

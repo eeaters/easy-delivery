@@ -57,10 +57,13 @@ table{
     width: 99%;
     border: 1px solid #ebeef5;
 }
+table th,
+table td{
+    border: 1px solid #ebeef5;
+}
 .table-four th ,
 .table-four td{
-    width: 25%;
-    border: 1px solid #ebeef5;
+    width: 24%;
 }
 .table-five th,
 .table-five td{

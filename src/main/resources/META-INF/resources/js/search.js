@@ -39,15 +39,22 @@ function deliveryDetail(obj){
 
 
 function get(url){
-    url = "http://121.4.50.38:9000" + url;
+    url = "http://127.0.0.1:9000" + url;
     var httpRequest = new XMLHttpRequest();
     httpRequest.open("GET", url, true);
+    httpRequest.setRequestHeader('token',localStorage.getItem("token"))
     httpRequest.send();
 
     httpRequest.onreadystatechange = function(){
-        if(httpRequest.status == 200 && httpRequest.readyState == 4){
-            var contentDiv = document.getElementById("content");
-            contentDiv.innerHTML = httpRequest.responseText;
+        if(httpRequest.readyState == 4){
+            if(httpRequest.status == 200 && httpRequest.readyState == 4){
+                var contentDiv = document.getElementById("content");
+                contentDiv.innerHTML = httpRequest.responseText;
+            }
+            if(httpRequest.status == 405 ){
+                alert("登录已失效");
+                window.location.href="login";
+            }
         }
     }
 }

@@ -3,11 +3,14 @@
 <head>
     <meta charset="utf-8">
     <title>智能配送</title>
-    <base href="http://121.4.50.38:9000/"/>
+    <base href="http://127.0.0.1:9000/"/>
     <link rel="stylesheet" href="css/clear.css"/>
     <link rel="stylesheet" href="css/query.css"/>
     <link rel="stylesheet" href="css/home.css"/>
-    <link rel="stylesheet" href="css/detail.css"/>
+
+    <link rel="stylesheet" href="https://www.layuiweb.com/res/layui/dist/css/layui.css" media="all"/>
+    <script src="https://www.layuiweb.com/res/layui/dist/layui.js"></script>
+
     <link rel="icon" href="./img/ico.ico">
     <script src="js/search.js"></script>
     <script  src="https://kit.fontawesome.com/64d58efce2.js"
@@ -47,14 +50,21 @@
 </body>
 <script>
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', 'http://121.4.50.38:9000/store', true);
+    httpRequest.open('GET', 'http://127.0.0.1:9000/store', true);
+    httpRequest.setRequestHeader('token',localStorage.getItem("token"))
     httpRequest.send();
 
     httpRequest.onreadystatechange = function(){
-    if(httpRequest.status == 200  && httpRequest.readyState == 4){
-            var res = httpRequest.responseText;
-            var loginBtn = document.getElementById("content");
-            loginBtn.innerHTML = res;
+        if(httpRequest.readyState == 4){
+           if(httpRequest.status == 200 ){
+                var res = httpRequest.responseText;
+                var loginBtn = document.getElementById("content");
+                loginBtn.innerHTML = res;
+            }
+            if(httpRequest.status == 405 ){
+                alert("登录已失效");
+                window.location.href="login";
+            }
         }
     }
 </script>
