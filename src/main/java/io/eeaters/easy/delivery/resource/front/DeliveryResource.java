@@ -1,6 +1,9 @@
 package io.eeaters.easy.delivery.resource.front;
 
 import io.eeaters.easy.delivery.entity.model.Delivery;
+import io.eeaters.easy.delivery.entity.model.DeliveryDetail;
+import io.eeaters.easy.delivery.entity.model.User;
+import io.eeaters.easy.delivery.entity.view.DeliveryDetailResVO;
 import io.netty.util.internal.StringUtil;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.quarkus.qute.Location;
@@ -16,6 +19,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Path("delivery")
 public class DeliveryResource {
@@ -59,6 +63,10 @@ public class DeliveryResource {
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance get(@QueryParam("id") Long id) {
         Delivery delivery = Delivery.findById(id);
-        return deliveryDetailTemplate.data("delivery", delivery);
+        List<DeliveryDetail> list = DeliveryDetail.find("deliveryId", id).list();
+        List<DeliveryDetailResVO> collect = list
+                .stream().map(DeliveryDetailResVO::convert).collect(Collectors.toList());
+        return deliveryDetailTemplate.data("delivery", delivery)
+                .data("detail", collect);
     }
 }

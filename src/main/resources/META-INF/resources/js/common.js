@@ -3,7 +3,7 @@ function popChannel(){
         type:2,
         title : '选择一个渠道',
         maxmin: true,
-        offset: '100px',
+        offset: '150px',
         area : [ '600px', '500px' ],
         content: '/channel/account/list'
     })

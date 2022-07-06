@@ -89,20 +89,19 @@ function storeAdd(){
         "longitude" : document.getElementById("longitude").value,
         "latitude": document.getElementById("latitude").value
     };
-    postUrl("store/add", body);
+    postUrl("store/add", body,"store");
 }
 
 
-function postUrl(url,body){
+function postUrl(url,body,redirectUrl){
     var httpRequest = new XMLHttpRequest();
     httpRequest.open("POST", url, true);
     httpRequest.setRequestHeader("Content-Type","application/json");
     httpRequest.setRequestHeader("token", localStorage.getItem("token"));
     httpRequest.send(JSON.stringify(body));
-    alert(JSON.stringify(body));
     httpRequest.onreadystatechange = function(){
         if(httpRequest.status == 200 && httpRequest.readyState == 4){
-            alert(httpRequest.responseText)
+            window.href.location=redirectUrl;
         }
     }
 }

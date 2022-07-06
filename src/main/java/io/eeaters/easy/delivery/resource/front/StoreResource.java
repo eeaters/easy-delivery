@@ -3,6 +3,7 @@ package io.eeaters.easy.delivery.resource.front;
 import io.eeaters.easy.delivery.entity.model.DeliveryStrategy;
 import io.eeaters.easy.delivery.entity.model.Store;
 import io.eeaters.easy.delivery.entity.view.BaseResponse;
+import io.eeaters.easy.delivery.util.StringUtils;
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
@@ -23,7 +24,12 @@ public class StoreResource {
 
     @GET
     public TemplateInstance store(@QueryParam("name") String name) {
-        List<Store> storeList = Store.findAll().list();
+        List<Store> storeList = null;
+        if (StringUtils.hasText(name)) {
+            storeList = Store.find("storeName", name).list();
+        }else {
+            storeList = Store.findAll().list();
+        }
         return store.data("storeList", storeList)
                 .data("name", name);
 

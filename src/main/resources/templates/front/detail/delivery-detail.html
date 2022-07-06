@@ -74,6 +74,35 @@
         </div>
     </div>
 
+    <div class="detail-group">
+        <div class="div-title"> 配送数据流转 </div>
+        <table class="delivery-detail-table" >
+
+            <thead>
+            <tr>
+                <th>渠道</th>
+                <th>时间</th>
+                <th>事件</th>
+                <th>骑手姓名</th>
+                <th>骑手电话</th>
+            </tr>
+            </thead>
+            {#for d in detail}
+            <tr>
+                <td>{d.channelName}</td>
+                <td>{d.createTime}</td>
+                <td>{d.statusEvent}</td>
+                <td>{d.riderName}</td>
+                <td>{d.riderPhone}</td>
+            </tr>
+            {/for}
+            <tbody>
+
+            </tbody>
+        </table>
+        </div>
+    </div>
+
 
 
 

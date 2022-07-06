@@ -1,32 +1,51 @@
-<p style="font-size:1.6em; background-color: #f0f0f0;border-bottom:thick dotted #f0f0f0;">
-    新增门店
-</p>
-
 
 <div class="detail">
-    <div class="detail-li-wrapper">
-        <ul class="li-three clearfix">
-            <li>
-                <i class="topic">门店编号:</i> &nbsp;&nbsp; <input type="text" id="storeCode" placeholder="请输入门店编号">
-            </li>
-            <li>
-                <i class="topic">门店名称:</i> &nbsp;&nbsp; <input type="text" id="storeName" placeholder="请输入门店名称">
-            </li>
-            <li>
-                <i class="topic">联系电话:</i> &nbsp;&nbsp;<input type="text" id="storePhone"  placeholder="请输入联系电话">
-            </li>
-        </ul>
-    </div>
-    <div class="delivery-info-wrapper">
-        <ul class="li-three clearfix">
-            <li><i class="topic">门店地址:</i>  &nbsp;&nbsp; <input type="text"  id="storeAddress" placeholder="请输入门店地址"></li>
-            <li><i class="topic">门店经度:</i>  &nbsp;&nbsp; <input type="text"  id="longitude"  placeholder="请输入经度"></li>
-            <li><i class="topic">门店纬度:</i>  &nbsp;&nbsp; <input type="text" id="latitude" placeholder="请输入纬度"></li>
-        </ul>
+    <div class="detail-group store-detail">
+        <div class="div-title"> 新增门店 </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">门店编号</label>
+            <div class="layui-input-block">
+                <input type="text"placeholder="请输入门店编号" id="storeCode" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">门店名称</label>
+            <div class="layui-input-block">
+                <input type="text"placeholder="请输入门店编号" id="storeName" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">联系电话</label>
+            <div class="layui-input-block">
+                <input type="text"placeholder="请输入联系电话" id="storePhone" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">门店地址</label>
+            <div class="layui-input-block">
+                <input type="text"placeholder="请输入门店地址" id="storeAddress" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">门店经度</label>
+            <div class="layui-input-block">
+                <input type="text"placeholder="请输入经度" id="longitude" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">门店纬度</label>
+            <div class="layui-input-block">
+                <input type="text"placeholder="请输入纬度" id="latitude" class="layui-input">
+            </div>
+        </div>
+
+
+        <div class="back-wrapper clearfix">
+            <button onclick="storeAdd()"> 确认 </button>
+            <button onclick="storeJump()"> 返回 </button>
+        </div>
     </div>
 
-    <div class="back-wrapper clearfix">
-        <button onclick="storeAdd()"> 确认 </button>
-        <button onclick="storeJump()"> 返回 </button>
-    </div>
+</div>
+
 </div>
