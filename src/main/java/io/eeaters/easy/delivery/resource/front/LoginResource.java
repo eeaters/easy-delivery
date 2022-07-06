@@ -11,6 +11,7 @@ import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 import io.quarkus.redis.client.RedisClient;
+import io.vertx.redis.client.Response;
 
 import javax.inject.Inject;
 import javax.validation.Valid;

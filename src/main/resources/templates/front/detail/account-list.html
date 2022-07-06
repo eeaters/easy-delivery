@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <base href="http://127.0.0.1:9000/"/>
+    <link rel="stylesheet" href="css/clear.css"/>
+    <link rel="stylesheet" href="css/detail-account.css"/>
+    <title>新增</title>
+</head>
+<body>
+
+<div id="all-account" >
+    <table>
+        <thead>
+        <tr>
+            <th>选择</th>
+            <th>渠道id</th>
+            <th>渠道标识</th>
+            <th>渠道名称</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        {#for l in list}
+        <tr>
+            <td>
+               <input type="checkbox" ,name="channelSelected">
+            </td>
+            <td>{l.id}</td>
+            <td>
+                {l.channel}
+            <td>{l.name}</td>
+        </tr>
+        {/for}
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -31,7 +31,7 @@ loginBtn.onclick = function(){
     };
 
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open('POST', 'http://127.0.0.1:9000/login/doLogin', true);
+    httpRequest.open('POST', 'login/doLogin', true);
     httpRequest.setRequestHeader('Content-type','application/json;charset=UTF-8')
     httpRequest.send(JSON.stringify(userInfo));
 

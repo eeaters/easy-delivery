@@ -1,27 +1,81 @@
-<p style="font-size:1.6em; background-color: #f0f0f0;border-bottom:thick dotted #f0f0f0;">
-    新增策略
-</p>
-
-
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
 <div class="detail">
-    <div class="detail-li-wrapper li-two">
-        <ul>
-            <li> <i class="topic">方案名称:</i> &nbsp;&nbsp; <input type="text" id="storeCode" placeholder="方案名称"></li>
-            <li>  <i class="topic">方案备注:</i> &nbsp;&nbsp; <input type="textarea" id="storeName" placeholder="最多50个字"></li>
-        </ul>
+    <div class="detail-group">
+        <div class="div-title"> 方案信息 </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">方案名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="" placeholder="请输入方案名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">描述</label>
+            <div class="layui-input-block">
+                <textarea placeholder="最多50个字" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">配送类型</label>
+            <div class="layui-input-block separator-20">
+                <label > 默认排序: </label>
+                <input type="radio" name="sex" value="0" title="男"/> &nbsp;&nbsp;&nbsp;
+                <label> 价格优先: </label>
+                <input type="radio" name="sex" value="1">&nbsp;&nbsp;&nbsp;
+                <label class="left"> 距离优先: </label>
+                <input type="radio" name="sex" value="1">&nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">超时间隔</label>
+            <div class="layui-input-block separator-20">
+                <select>
+                    <option>15</option>
+                    <option>20</option>
+                    <option>25</option>
+                    <option>30</option>
+                </select>
+            </div>
+        </div>
     </div>
-    <div class="delivery-info-wrapper">
-        <select>
-            <option value=""> ---- </option>
-            {#for account in accounts}
-                <option value="{account.id}"> {account.name}</option>
-            {/for}
-        </select>
+
+
+    <div class="detail-group">
+        <div class="div-title"> 三方渠道绑定 </div>
+        <div class="layui-input-block" style="margin: 15px auto;">
+            <button class="layui-btn layui-btn-radius layui-btn-normal" onclick="popChannel()" style=" margin-left: 30px;float: left;">新增渠道</button>
+        </div>
+        <div id="channel-wrapper" style="width: 900px; ">
+            <table>
+                <thead>
+                <tr>
+                    <th>渠道id</th>
+                    <th>渠道简写</th>
+                    <th>渠道名称</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+
+        </div>
 
     </div>
 
-    <div class="back-wrapper clearfix">
-        <button onclick="storeAdd()"> 确认-还没好 </button>
-        <button onclick="strategyJump()"> 返回 </button>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="*">保存</button>
+            <button type="reset"  id = 'strategy-reset' class="layui-btn layui-btn-primary">返回</button>
+        </div>
     </div>
+
 </div>
+</body>
+</html>

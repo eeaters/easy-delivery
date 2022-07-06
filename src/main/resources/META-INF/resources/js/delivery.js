@@ -19,7 +19,7 @@ function strategyJump(){
     get("/strategy")
 }
 function strategyAddJump(){
-    get("/strategy/addPage")
+    get('/strategy/addPage');
 }
 
 function deliverySearch(){
@@ -39,7 +39,6 @@ function deliveryDetail(obj){
 
 
 function get(url){
-    url = "http://127.0.0.1:9000" + url;
     var httpRequest = new XMLHttpRequest();
     httpRequest.open("GET", url, true);
     httpRequest.setRequestHeader('token',localStorage.getItem("token"))
@@ -52,8 +51,29 @@ function get(url){
                 contentDiv.innerHTML = httpRequest.responseText;
             }
             if(httpRequest.status == 405 ){
-                alert("登录已失效");
-                window.location.href="login";
+                layer.open({
+                     title: ['登录已失效'],
+                     btn: ['返回登录页面'],
+                     shade: 0.5,
+                     yes: function(index){
+                         window.location.href="login";
+                     }
+                 });
+            }
+        }
+    }
+}
+function getBody(url){
+  var httpRequest = new XMLHttpRequest();
+    httpRequest.open("GET", url, true);
+    httpRequest.setRequestHeader('token',localStorage.getItem("token"))
+    httpRequest.send();
+
+    httpRequest.onreadystatechange = function(){
+        if(httpRequest.readyState == 4){
+            if(httpRequest.status == 200 && httpRequest.readyState == 4){
+                var contentDiv = document.getElementById("content");
+                return httpRequest.responseText;
             }
         }
     }
@@ -83,6 +103,23 @@ function postUrl(url,body){
     httpRequest.onreadystatechange = function(){
         if(httpRequest.status == 200 && httpRequest.readyState == 4){
             alert(httpRequest.responseText)
+        }
+    }
+}
+
+
+
+
+function logOut(){
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open('GET', 'login/logout', true);
+    httpRequest.setRequestHeader("token", localStorage.getItem("token"));
+    httpRequest.send();
+
+    httpRequest.onreadystatechange = function(){
+        if(httpRequest.status == 200 && httpRequest.readyState == 4){
+              localStorage.removeItem("token");
+              window.location.href="login";
         }
     }
 }

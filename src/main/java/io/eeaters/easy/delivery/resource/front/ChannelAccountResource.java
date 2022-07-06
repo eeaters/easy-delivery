@@ -2,6 +2,11 @@ package io.eeaters.easy.delivery.resource.front;
 
 import io.eeaters.easy.delivery.entity.model.ChannelAccount;
 import io.eeaters.easy.delivery.entity.view.BaseResponse;
+import io.quarkus.qute.Location;
+import io.quarkus.qute.Template;
+import io.quarkus.qute.TemplateInstance;
+
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -23,11 +28,15 @@ public class ChannelAccountResource {
         return BaseResponse.success(ChannelAccount.findById(id));
     }
 
+    @Inject
+    @Location("front/detail/account-list")
+    Template template;
+
     @GET
     @Path("list")
-    @Produces(MediaType.APPLICATION_JSON)
-    public BaseResponse<List<ChannelAccount>> listAll() {
-        return BaseResponse.success(ChannelAccount.listAll());
+    public TemplateInstance listAll() {
+        System.out.println("ChannelAccount.listAll() = " + ChannelAccount.listAll());
+        return template.instance().data("list", ChannelAccount.listAll());
     }
 
 }

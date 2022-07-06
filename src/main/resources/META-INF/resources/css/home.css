@@ -18,7 +18,7 @@ body{
 .city:hover,
 .top .heignlignt
 {
-    color: #f10216;
+    color: #283446;
 }
 .inner{
     width : 1390px;
@@ -39,8 +39,7 @@ body{
 }
 .top a , top span{
     text-decoration: none;
-    color: black;
-
+    color: white;
 }
 .shortcut .line{
     margin-left: 20px ;
