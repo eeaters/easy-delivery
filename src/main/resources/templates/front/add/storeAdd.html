@@ -5,43 +5,44 @@
         <div class="layui-form-item layui-form-text" style="width:750px">
             <label class="layui-form-label">门店编号</label>
             <div class="layui-input-block">
-                <input type="text"placeholder="请输入门店编号" id="storeCode" class="layui-input">
+                <input type="text"placeholder="请输入门店编号" id="storeCode" class="layui-input" {#if store??}value="{store.storeCode}"{/if}>
             </div>
         </div>
         <div class="layui-form-item layui-form-text" style="width:750px">
             <label class="layui-form-label">门店名称</label>
             <div class="layui-input-block">
-                <input type="text"placeholder="请输入门店编号" id="storeName" class="layui-input">
+                <input type="text"placeholder="请输入门店编号" id="storeName" class="layui-input" {#if store??}value="{store.storeName}"{/if}>
             </div>
         </div>
         <div class="layui-form-item layui-form-text" style="width:750px">
             <label class="layui-form-label">联系电话</label>
             <div class="layui-input-block">
-                <input type="text"placeholder="请输入联系电话" id="storePhone" class="layui-input">
+                <input type="text"placeholder="请输入联系电话" id="storePhone" class="layui-input"  {#if store??}value="{store.phone}"{/if}>
             </div>
         </div>
         <div class="layui-form-item layui-form-text" style="width:750px">
             <label class="layui-form-label">门店地址</label>
             <div class="layui-input-block">
-                <input type="text"placeholder="请输入门店地址" id="storeAddress" class="layui-input">
+                <input type="text"placeholder="请输入门店地址" id="storeAddress" class="layui-input" {#if store??}value="{store.address}"{/if}>
             </div>
         </div>
         <div class="layui-form-item layui-form-text" style="width:750px">
             <label class="layui-form-label">门店经度</label>
             <div class="layui-input-block">
-                <input type="text"placeholder="请输入经度" id="longitude" class="layui-input">
+                <input type="text"placeholder="请输入经度" id="longitude" class="layui-input" {#if store??}value="{store.longitude}"{/if}>
             </div>
         </div>
         <div class="layui-form-item layui-form-text" style="width:750px">
             <label class="layui-form-label">门店纬度</label>
             <div class="layui-input-block">
-                <input type="text"placeholder="请输入纬度" id="latitude" class="layui-input">
+                <input type="text"placeholder="请输入纬度" id="latitude" class="layui-input" {#if store??}value="{store.latitude}"{/if}>
             </div>
         </div>
 
 
         <div class="back-wrapper clearfix">
-            <button onclick="storeAdd()"> 确认 </button>
+            <input type="hidden"  {#if store??}value="{store.id}"{/if}>
+            <button onclick="storeAdd(this)"> 确认 </button>
             <button onclick="storeJump()"> 返回 </button>
         </div>
     </div>

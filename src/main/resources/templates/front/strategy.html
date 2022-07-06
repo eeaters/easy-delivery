@@ -52,7 +52,8 @@
                 <td>{l.name}</td>
                 <td>{l.desc}</td>
                 <td>
-                    <a href="javascript:void(0)">编辑-暂未支持</a>
+                    <input type="hidden" value="{l.id}">
+                    <a onclick="strategyAddJump(this)" href="javascript:void(0)">编辑</a>
                 </td>
             </tr>
             {/for}

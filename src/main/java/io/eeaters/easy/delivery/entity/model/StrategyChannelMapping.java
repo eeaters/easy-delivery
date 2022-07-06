@@ -17,6 +17,9 @@ public class StrategyChannelMapping extends PanacheEntityBase {
     @Column(name = "channel_id")
     private Long channelId;
 
+    @Column(name = "channel_name")
+    private String channelName;
+
     @Column(name = "order")
     private Integer order;
 
@@ -49,6 +52,14 @@ public class StrategyChannelMapping extends PanacheEntityBase {
 
     public void setChannelId(Long channelId) {
         this.channelId = channelId;
+    }
+
+    public String getChannelName() {
+        return channelName;
+    }
+
+    public void setChannelName(String channelName) {
+        this.channelName = channelName;
     }
 
     public Integer getOrder() {

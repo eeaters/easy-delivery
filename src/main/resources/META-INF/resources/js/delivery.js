@@ -5,8 +5,13 @@ function storeSearch(){
 function storeJump(){
     get("/store")
 }
-function jumpStoreAddPage(){
-    get("/store/addPage")
+function jumpStoreAddPage(obj){
+    if(obj == null){
+        get("/store/addPage")
+    }else{
+        var storeId = obj.previousElementSibling.value;
+        get('/store/addPage?storeId='+storeId);
+    }
 }
 
 
@@ -18,8 +23,18 @@ function strategySearch(){
 function strategyJump(){
     get("/strategy")
 }
-function strategyAddJump(){
-    get('/strategy/addPage');
+
+function strategySave(){
+    postUrl("/strategy/saveOrUpdate",null, "/strategy")
+}
+
+function strategyAddJump(obj){
+    if(obj == null){
+       get('/strategy/addPage');
+    }else{
+    var strategyId = obj.previousElementSibling.value;
+     get('/strategy/addPage?strategyId='+strategyId);
+    }
 }
 
 function deliverySearch(){
@@ -80,15 +95,19 @@ function getBody(url){
 }
 
 
-function storeAdd(){
+function storeAdd(obj){
+    var id = obj.previousElementSibling.value;
     var body = {
-        "storeCode" : document.getElementById("storeCode").value,
-        "storeName" : document.getElementById("storeName").value,
-        "phone" : document.getElementById("storePhone").value,
-        "address" : document.getElementById("storeAddress").value,
-        "longitude" : document.getElementById("longitude").value,
-        "latitude": document.getElementById("latitude").value
-    };
+            "storeCode" : document.getElementById("storeCode").value,
+            "storeName" : document.getElementById("storeName").value,
+            "phone" : document.getElementById("storePhone").value,
+            "address" : document.getElementById("storeAddress").value,
+            "longitude" : document.getElementById("longitude").value,
+            "latitude": document.getElementById("latitude").value
+        };
+    if(id != null){
+        body.id = id;
+    }
     postUrl("store/add", body,"store");
 }
 
@@ -101,7 +120,7 @@ function postUrl(url,body,redirectUrl){
     httpRequest.send(JSON.stringify(body));
     httpRequest.onreadystatechange = function(){
         if(httpRequest.status == 200 && httpRequest.readyState == 4){
-            window.href.location=redirectUrl;
+            get(redirectUrl)
         }
     }
 }

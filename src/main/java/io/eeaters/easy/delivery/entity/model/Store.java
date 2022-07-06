@@ -24,6 +24,9 @@ public class Store extends PanacheEntityBase {
     @NotBlank(message = "门店编号不能为空")
     private String storeCode;
 
+    @NotBlank(message = "门店地址不能为空")
+    private String address;
+
     @NotBlank(message = "门店经度不能为空")
     private String longitude;
 
@@ -137,14 +140,25 @@ public class Store extends PanacheEntityBase {
     public String toString() {
         return "Store{" +
                 "id=" + id +
+                ", userId=" + userId +
                 ", storeName='" + storeName + '\'' +
                 ", storeCode='" + storeCode + '\'' +
+                ", address='" + address + '\'' +
                 ", longitude='" + longitude + '\'' +
                 ", latitude='" + latitude + '\'' +
+                ", phone='" + phone + '\'' +
                 ", createUser='" + createUser + '\'' +
                 ", createTime=" + createTime +
                 ", updateUser='" + updateUser + '\'' +
                 ", updateTime=" + updateTime +
                 '}';
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

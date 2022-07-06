@@ -56,6 +56,11 @@ public class AccessFilter implements ContainerRequestFilter, ContainerResponseFi
             return;
         }
         User user = objectMapper.readValue(userInfo, User.class);
+
+        String idKey = RedisKeyUtils.userIdKey(user.getId());
+        String tokenKey = RedisKeyUtils.tokenKey(token);
+        redisClient.expire(idKey, "6000");
+        redisClient.expire(tokenKey, "6000");
         UserThreadLocal.setUserInfo(token, user);
     }
 

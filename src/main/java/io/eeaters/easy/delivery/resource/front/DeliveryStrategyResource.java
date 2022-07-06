@@ -1,10 +1,8 @@
 package io.eeaters.easy.delivery.resource.front;
 
-import io.eeaters.easy.delivery.entity.model.ChannelAccount;
 import io.eeaters.easy.delivery.entity.model.DeliveryStrategy;
 import io.eeaters.easy.delivery.entity.model.StrategyChannelMapping;
 import io.eeaters.easy.delivery.entity.view.BaseResponse;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
@@ -33,9 +31,16 @@ public class DeliveryStrategyResource {
 
     @GET
     @Path("addPage")
-    public TemplateInstance strategyAdd() {
-        List<ChannelAccount> accounts = ChannelAccount.findAll().list();
-        return strategyAdd.instance().data("accounts", accounts);
+    public TemplateInstance strategyAdd(@QueryParam("strategyId") Long strategyId) {
+        TemplateInstance instance = strategyAdd.instance();
+        if (strategyId != null) {
+            DeliveryStrategy strategy = DeliveryStrategy.findById(strategyId);
+            List<StrategyChannelMapping> list = StrategyChannelMapping.find("strategyId", strategyId).list();
+            System.out.println("list = " + list);
+            instance.data("strategy", strategy)
+                    .data("channelMapping", list);
+        }
+        return instance;
     }
 
 
