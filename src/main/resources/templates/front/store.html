@@ -48,20 +48,20 @@
             </thead>
 
             <tbody>
-            {#for store in storeList}
+            {#for item in storeList}
             <tr>
-                <td>{store.id}</td>
+                <td>{item.store.id}</td>
                 <td>
-                   {store.storeName}
-                <td>{store.longitude} , {store.latitude}</td>
+                   {item.store.storeName}
+                <td>{item.store.longitude} , {item.store.latitude}</td>
                 <td>
-                    {store.phone}
+                    {item.store.phone}
                 </td>
                 <td>
-                    还没有做好绑定
+                    {item.strategyName}
                 </td>
                 <td>
-                    <input type="hidden" value="{store.id}">
+                    <input type="hidden" value="{item.store.id}">
                     <a href="javascript:void(0)" onclick="jumpStoreAddPage(this)">编辑</a>
                 </td>
             </tr>

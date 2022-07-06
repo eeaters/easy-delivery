@@ -108,7 +108,10 @@ function storeAdd(obj){
     if(id != null){
         body.id = id;
     }
-    postUrl("store/add", body,"store");
+    var selectEle = document.getElementById("strategy-mapping");
+    var index=selectEle.selectedIndex
+    var strategyId = selectEle.options[index].value;
+    postUrl("store/add?strategyId="+strategyId, body,"store");
 }
 
 
