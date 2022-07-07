@@ -28,7 +28,7 @@ public class DeliveryDetailResVO {
     @Column(name = "create_time")
     private String createTime;
 
-    static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
 
     public static DeliveryDetailResVO convert(DeliveryDetail deliveryDetail) {
         DeliveryDetailResVO resVO = new DeliveryDetailResVO();

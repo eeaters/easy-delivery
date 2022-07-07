@@ -25,7 +25,24 @@ function strategyJump(){
 }
 
 function strategySave(){
-    postUrl("/strategy/saveOrUpdate",null, "/strategy")
+    let table = document.getElementById("channel-table");
+    let tbody = table.getElementsByTagName('tbody')[0];
+    var trs = tbody.getElementsByTagName('tr');
+    var channelIds = [];
+    for (var i = 0; i< trs.length; i++){
+        let value = trs[i].querySelector('select[name="channelId"]').value;
+        channelIds.push(value);
+    }
+
+    var body = {
+        "id": document.getElementById("strategyId").value,
+        "name": document.getElementById("strategyName").value,
+        "desc": document.getElementById("strategyDesc").value,
+        "type": document.querySelector('input[name="strategyType"]:checked').value,
+        "timeoutPeriod": document.getElementById("strategy-timeout-period").value,
+        "channels": channelIds
+    }
+    console.log(body);
 }
 
 function strategyAddJump(obj){

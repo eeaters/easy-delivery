@@ -7,6 +7,8 @@ public enum ChannelEnum {
     MEITUAN("meituan", "美团"),
     FENGNIAO("fengniao", "蜂鸟"),
 
+    SHANSONG("shansong","闪送")
+
     ;
     private String shortName;
 

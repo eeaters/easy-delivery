@@ -12,7 +12,6 @@ public class User extends PanacheEntityBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer type;
 
     @Column(name = "user_name")
     private String userName;
@@ -28,12 +27,6 @@ public class User extends PanacheEntityBase {
     @Column(name = "create_time", insertable = false, updatable = false)
     private LocalDateTime createTime;
 
-    @Column(name = "update_user")
-    private String updateUser;
-
-    @Column(name = "update_time", insertable = false, updatable = false)
-    private LocalDateTime updateTime;
-
 
     public Long getId() {
         return id;
@@ -41,14 +34,6 @@ public class User extends PanacheEntityBase {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
     }
 
     public String getUserName() {
@@ -91,35 +76,5 @@ public class User extends PanacheEntityBase {
         this.createTime = createTime;
     }
 
-    public String getUpdateUser() {
-        return updateUser;
-    }
 
-    public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", type=" + type +
-                ", userName='" + userName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", password='" + password + '\'' +
-                ", createUser='" + createUser + '\'' +
-                ", createTime=" + createTime +
-                ", updateUser='" + updateUser + '\'' +
-                ", updateTime=" + updateTime +
-                '}';
-    }
 }

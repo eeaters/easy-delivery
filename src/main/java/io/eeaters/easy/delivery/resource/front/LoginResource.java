@@ -50,7 +50,7 @@ public class LoginResource {
     public BaseResponse<String> login(@Valid UserLogin userLogin) throws Exception {
         User user = User.find("phone", userLogin.getPhone()).firstResult();
         if (user == null || !user.getPassword().equals(userLogin.getPassword())) {
-            throw new LogicException("用户名或密码不正确");
+            throw new LogicException("用戶或密码不正确");
         }
         String token = UUID.randomUUID().toString();
         String value = objectMapper.writeValueAsString(user);

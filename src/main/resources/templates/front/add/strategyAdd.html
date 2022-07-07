@@ -4,7 +4,7 @@
         <div class="layui-form-item layui-form-text" style="width:750px">
             <label class="layui-form-label">方案名称</label>
             <div class="layui-input-block">
-                <input type="text" placeholder="请输入方案名称" class="layui-input"
+                <input type="text" placeholder="请输入方案名称" class="layui-input" id="strategyName"
                        {#if strategy??}
                             value="{strategy.name}"
                        {/if}
@@ -14,7 +14,7 @@
         <div class="layui-form-item layui-form-text" style="width:750px">
             <label class="layui-form-label">描述</label>
             <div class="layui-input-block">
-                <textarea placeholder="最多50个字" class="layui-textarea"> {#if strategy??}{strategy.desc}{/if}</textarea>
+                <textarea placeholder="最多50个字" class="layui-textarea" id="strategyDesc"> {#if strategy??}{strategy.desc}{/if}</textarea>
             </div>
         </div>
         <div class="layui-form-item layui-form-text" style="width:750px">
@@ -23,17 +23,17 @@
             <div class="layui-input-block search-wrapper">
 
                 <label class="btn-space"> 默认排序: </label>
-                <input type="radio" name="type" value="1"
+                <input type="radio" name="strategyType" value="1"
                        {#if !strategy?? || strategy.type == 1}
                        checked
                        {/if}>&nbsp;
                 <label class="btn-space"> 价格优先: </label>
-                <input type="radio" name="type" value="2"
+                <input type="radio" name="strategyType" value="2"
                        {#if strategy?? && strategy.type == 2}
                        checked
                        {/if}>&nbsp;&nbsp;&nbsp;
                 <label class="btn-space"> 距离优先: </label>
-                <input type="radio" name="type" value="3"
+                <input type="radio" name="strategyType" value="3"
                        {#if strategy?? && strategy.type == 3}
                        checked
                        {/if}>
@@ -42,11 +42,11 @@
         <div class="layui-form-item layui-form-text" style="width:750px">
             <label class="layui-form-label">超时间隔</label>
             <div class="layui-input-block search-wrapper">
-                <select>
-                    <option>15分钟</option>
-                    <option>20分钟</option>
-                    <option>25分钟</option>
-                    <option>30分钟</option>
+                <select id="strategy-timeout-period">
+                    <option value="15" {#if !strategy?? || strategy.timeoutPeriod == 15}selected {/if}>15分钟</option>
+                    <option value="20" {#if !strategy?? || strategy.timeoutPeriod == 20}selected {/if}>20分钟</option>
+                    <option value="25" {#if !strategy?? || strategy.timeoutPeriod == 25}selected {/if}>25分钟</option>
+                    <option value="30" {#if !strategy?? || strategy.timeoutPeriod == 30}selected {/if}>30分钟</option>
                 </select>
             </div>
         </div>
@@ -58,7 +58,7 @@
             <button  onclick="popChannel()" style=" margin-left: 30px;float: left;">新增渠道</button>
         </div>
         <div id="channel-wrapper" style="width: 900px; ">
-            <table>
+            <table id = "channel-table">
                 <thead>
                 <tr>
                     <th>渠道名称</th>
@@ -68,15 +68,20 @@
 
                 <tbody>
                 {#if channelMapping??}
-                {#for l in channelMapping}
-                <tr>
-                    <td>{l.channelName} </td>
-                    <td>
-                        <input type="hidden" value="{l.id}">
-                        <a href="javascript:void(0)">删除</a>
-                    </td>
-                </tr>
-                {/for}
+                    {#for mapping in channelMapping}
+                        <tr>
+                            <td>
+                                <select name="channelId">
+                                    {#for channel in channelList}
+                                        <option value="{channel.id}"  {#if channel.id == mapping.channelId} selected {/if}> {channel.name}</option>
+                                    {/for}
+                                </select>
+                            </td>
+                            <td>
+                                <a href="javascript:void(0)">删除</a>
+                            </td>
+                        </tr>
+                    {/for}
                 {/if}
                 </tbody>
             </table>
@@ -88,9 +93,18 @@
 
     <div class="layui-form-item">
         <div class="layui-input-block back-wrapper">
+            <input type="hidden" id="strategyId"  {#if strategy??} value="{strategy.id}" {/if}>
             <button onclick="strategySave()">保存</button>
             <button onclick="strategyJump()">返回</button>
         </div>
+    </div>
+
+    <div id="select_hidden" style="visibility: hidden">
+        <select name="channelId">
+            {#for l in channelList}
+                <option value="{l.id}"> {l.name}</option>
+            {/for}
+        </select>
     </div>
 
 </div>
