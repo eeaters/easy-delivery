@@ -20,10 +20,10 @@ public class StrategyChannelMapping extends PanacheEntityBase {
     @Column(name = "channel_name")
     private String channelName;
 
-    @Column(name = "order")
+    @Column(name = "`order`")
     private Integer order;
 
-    @Column(name = "create_time")
+    @Column(name = "create_time",insertable = false,updatable = false)
     private LocalDateTime createTime;
 
     @Column(name = "create_user")

@@ -42,7 +42,7 @@ function strategySave(){
         "timeoutPeriod": document.getElementById("strategy-timeout-period").value,
         "channels": channelIds
     }
-    console.log(body);
+    postUrl("strategy/createOrUpdate",body,"strategy");
 }
 
 function strategyAddJump(obj){

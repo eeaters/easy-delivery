@@ -16,7 +16,12 @@ function popChannel(){
                 selectInfo +
         "  </td>\n" +
         "   <td>" +
-        "      <a href=\"javascript:void(0)\">删除</a>\n" +
+       "     <a href=\"javascript:void(0)\" onclick=\"deleteTr(this)\">删除</a>" +
         "  </td>\n" +
         " </tr>";
+}
+
+function deleteTr(obj) {
+     var trnode = obj.parentNode.parentNode;
+     trnode.parentNode.removeChild(trnode);
 }

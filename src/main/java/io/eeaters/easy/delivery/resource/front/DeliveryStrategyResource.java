@@ -4,11 +4,14 @@ import io.eeaters.easy.delivery.entity.model.ChannelAccount;
 import io.eeaters.easy.delivery.entity.model.DeliveryStrategy;
 import io.eeaters.easy.delivery.entity.model.StrategyChannelMapping;
 import io.eeaters.easy.delivery.entity.view.BaseResponse;
+import io.eeaters.easy.delivery.entity.view.DeliveryStrategyReq;
+import io.eeaters.easy.delivery.manager.DeliveryStrategyManager;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -62,17 +65,19 @@ public class DeliveryStrategyResource {
 
     @GET
     @Path("get/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
     public BaseResponse<DeliveryStrategy> get(@PathParam("id") Long id) {
         return BaseResponse.success(DeliveryStrategy.findById(id));
     }
 
+
+    @Inject
+    DeliveryStrategyManager strategyManager;
+
     @POST
-    @Path("create")
-    @Produces(MediaType.APPLICATION_JSON)
-    public BaseResponse<Long> create(DeliveryStrategy deliveryStrategy) {
-        deliveryStrategy.persistAndFlush();
-        return BaseResponse.success(deliveryStrategy.getId());
+    @Transactional
+    @Path("createOrUpdate")
+    public BaseResponse<Long> create(DeliveryStrategyReq deliveryStrategy) {
+        return BaseResponse.success(strategyManager.createOrUpdate(deliveryStrategy));
     }
 
     @POST
