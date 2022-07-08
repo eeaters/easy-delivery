@@ -1,0 +1,40 @@
+<div class="layui-input-block back-wrapper" style="margin: 15px auto;">
+    <button  onclick="channelAddPage()" style=" margin-left: 30px;float: left;">新增渠道</button>
+</div>
+<hr/>
+<div class="table-wrapper">
+    <div class="table-eight">
+        <table>
+            <thead>
+            <tr>
+                <th>渠道id</th>
+                <th>渠道简称</th>
+                <th>渠道名称</th>
+                <th>秘钥Key</th>
+                <th>API秘钥</th>
+                <th>令牌</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {#for l in list}
+                <tr>
+                <td>{l.id}</td>
+                <td>{l.channel}</td>
+                <td>{l.name}</td>
+                <td>{l.appKey}</td>
+                <td>{l.appSecret} </td>
+                <td>{l.appToken} </td>
+                <td>
+                    <input type="hidden" value="{l.id}">
+                    <a onclick="channelAddPage(this)" href="javascript:void(0)">查看</a>
+                </td>
+                </tr>
+            {/for}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>智能配送</title>
+    <base href="http://127.0.0.1:9000/"/>
+    <link rel="stylesheet" href="css/clear.css"/>
+    <link rel="stylesheet" href="css/query.css"/>
+    <link rel="stylesheet" href="css/home.css"/>
+    <link rel="stylesheet" href="css/form.css"/>
+
+    <link rel="stylesheet" href="https://www.layuiweb.com/res/layui/dist/css/layui.css" media="all"/>
+    <script src="https://www.layuiweb.com/res/layui/dist/layui.js"></script>
+
+    <link rel="icon" href="./img/ico.ico">
+    <script src="js/adminHome.js"></script>
+    <script  src="https://kit.fontawesome.com/64d58efce2.js"
+             crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="top clearfix">
+    <div class="inner">
+        <!-- 定一下位置 -->
+        <div class="location">
+        </div>
+
+        <div class="shortcut">
+            <ul>
+                <li class="line">
+                    <a href="javascript:void(0)">你好, 管理员</a>
+                </li>
+                <li class="line">
+                    <a onclick="channelList()" href="javascript:void(0)">渠道管理</a>
+                </li>
+                <li class="line">
+                    <a onclick="logOut()" href="javascript:void(0)">退出登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="content">
+</div>
+</body>
+<script>
+    channelList();
+</script>
+</html>

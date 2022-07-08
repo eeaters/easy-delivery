@@ -29,7 +29,9 @@ public class AccessFilter implements ContainerRequestFilter, ContainerResponseFi
             "^/login",
             "^/login/doLogin",
             "^/home",
-            "^/management/login/.*",
+            "^/management/home",
+            "^/management/login.*",
+            "^/management/doLogin.*",
             "/channel/account/list");
 
     @Inject

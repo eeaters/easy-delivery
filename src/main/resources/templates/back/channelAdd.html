@@ -1,0 +1,46 @@
+
+<div class="detail">
+    <div class="detail-group store-detail">
+        <div class="div-title"> 渠道 </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">渠道名称</label>
+            <div class="layui-input-block">
+                <input type="text"placeholder="请输入渠道名称" id="accountName" class="layui-input" {#if account??}value="{account.name}"{/if}>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">渠道简称</label>
+            <div class="layui-input-block">
+                <input type="text"placeholder="请输入渠道简称" id="accountChannel" class="layui-input" {#if account??}value="{account.channel}"{/if}>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">秘钥key</label>
+            <div class="layui-input-block">
+                <input type="text"placeholder="请输入秘钥Key" id="appKey" class="layui-input"  {#if account??}value="{account.appKey}"{/if}>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">秘钥</label>
+            <div class="layui-input-block">
+                <input type="text"placeholder="请输入秘钥" id="appSecret" class="layui-input" {#if account??}value="{account.appSecret}"{/if}>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">令牌</label>
+            <div class="layui-input-block">
+                <input type="text"placeholder="请输入令牌" id="appToken" class="layui-input" {#if account??}value="{account.appToken}"{/if}>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-wrapper clearfix">
+        <input type="hidden"  {#if account??}value="{account.id}"{/if}>
+        <button onclick="channelAdd(this)"> 确认 </button>
+        <button onclick="channelList()"> 返回 </button>
+    </div>
+</div>
+
+</div>
+
+</div>
