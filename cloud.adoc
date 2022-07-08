@@ -58,4 +58,6 @@ mvn quarkus:dev 仅仅适用于本地环境; 服务器上跑还得打包
 
 mvn clean package -U -Dquarkus.package.type=uber-jar
 
+这时候可能出现写target时没有权限, 需要设置读写权限: chmod 777 /opt/projectDir
+
 然后java -jar 运行target下的jar包
