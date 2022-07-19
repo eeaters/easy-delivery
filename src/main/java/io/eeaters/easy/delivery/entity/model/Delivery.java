@@ -47,7 +47,7 @@ public class Delivery extends PanacheEntityBase {
     private String destPhone;
 
     @Column(name = "is_pre")
-    private Integer isPre;
+    private Byte isPre;
 
     @Column(name = "except_time")
     private LocalDateTime exceptTime;
@@ -154,11 +154,11 @@ public class Delivery extends PanacheEntityBase {
         this.destUser = destUser;
     }
 
-    public Integer getIsPre() {
+    public Byte getIsPre() {
         return isPre;
     }
 
-    public void setIsPre(Integer isPre) {
+    public void setIsPre(Byte isPre) {
         this.isPre = isPre;
     }
 
