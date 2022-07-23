@@ -65,8 +65,31 @@ function deliverySearch() {
     get("/delivery" + getParam(param));
 }
 
+function deliveryAdd() {
+    get("/delivery/addPage");
+}
+
+
 function deliveryJump() {
     get("/delivery");
+}
+
+function deliveryMockAdd() {
+    var storeId = document.getElementById("storeId");
+    var index = storeId.selectedIndex
+    var storeIdVal = storeId.options[index].value;
+
+    var body = {
+        "storeId": storeIdVal,
+        "orderId": document.getElementById("orderId").value,
+        "orderPrice": document.getElementById("amount").value,
+        "destUser": document.getElementById("destUser").value,
+        "destPhone": document.getElementById("destPhone").value,
+        "destLongitude": document.getElementById("longitude").value,
+        "destLatitude": document.getElementById("latitude").value,
+        "destAddress": document.getElementById("destAddress").value
+    }
+    postUrl("/delivery/add",body,"/delivery");
 }
 
 function deliveryDetail(obj) {

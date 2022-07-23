@@ -62,3 +62,4 @@ mvn clean package -U -Dquarkus.package.type=uber-jar
 sudo  chmod 777 /projectDir
 
 然后java -jar 运行target下的jar包
+nohup java -jar easy-delivery-1.0.0-SNAPSHOT-runner.jar &

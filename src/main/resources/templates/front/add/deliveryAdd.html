@@ -1,0 +1,66 @@
+<div class="detail">
+    <div class="detail-group store-detail">
+        <div class="div-title"> 新建运单 </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">门店编号</label>
+            <div class="layui-input-block search-wrapper">
+                <select id="storeId">
+                    {#for l in storeList}
+                        <option value="{l.id}">{l.storeName}</option>
+                    {/for}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">订单编号</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请输入门店编号" id="orderId" class="layui-input" value="{mock.orderId}">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">订单金额</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请输入门店编号" id="amount" class="layui-input" value="{mock.amount}">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">收货人</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请输入门店编号" id="destUser" class="layui-input" value="{mock.destUser}">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">收货电话</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请输入门店编号" id="destPhone" class="layui-input" value="{mock.destPhone}">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">收货地址</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请输入门店编号" id="destAddress" class="layui-input" value="{mock.destAddress}">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">收货经度</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请输入门店编号" id="longitude" class="layui-input" value="{mock.longitude}">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" style="width:750px">
+            <label class="layui-form-label">收货纬度</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请输入门店编号" id="latitude" class="layui-input" value="{mock.latitude}">
+            </div>
+        </div>
+    </div>
+
+    <div class="back-wrapper clearfix">
+        <button onclick="deliveryMockAdd()"> 确认 </button>
+        <button onclick="deliveryJump()"> 返回 </button>
+    </div>
+</div>
+
+</div>
+
+</div>

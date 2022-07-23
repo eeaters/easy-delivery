@@ -35,6 +35,7 @@
                             {/if}
                 />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button onclick="deliverySearch()"> 查询 </button>
+                <button onclick="deliveryAdd()"> 创建运单 </button>
             </div>
         </div>
     </section>
@@ -56,8 +57,8 @@
             <tbody>
             {#for l in list}
             <tr>
-                <td>{l.id}</td>
                 <td>{l.storeId}</td>
+                <td>{l.id}</td>
                 <td>{l.orderId}</td>
                 <td>{l.destLongitude} , {l.destLatitude}</td>
                 <td>{l.destAddress} </td>

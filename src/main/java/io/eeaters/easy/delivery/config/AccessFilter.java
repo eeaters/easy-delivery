@@ -52,12 +52,12 @@ public class AccessFilter implements ContainerRequestFilter, ContainerResponseFi
             logInFailureResponse(containerRequestContext);
             return;
         }
-        String userInfo = redisClient.get(RedisKeyUtils.tokenKey(token)).toString();
-        if (!StringUtils.hasText(token)) {
+        io.vertx.redis.client.Response response = redisClient.get(RedisKeyUtils.tokenKey(token));
+        if (response == null) {
             logInFailureResponse(containerRequestContext);
             return;
         }
-        User user = objectMapper.readValue(userInfo, User.class);
+        User user = objectMapper.readValue(response.toString(), User.class);
 
         String idKey = RedisKeyUtils.userIdKey(user.getId());
         String tokenKey = RedisKeyUtils.tokenKey(token);
