@@ -1,6 +1,6 @@
 # easy-delivery Project
 
-想学quarkus + 需要写论文 , 那么就用quarkus写一个简陋的项目吧
+想学quarkus + 需要写论文 , 那么就用quarkus写一个简陋的项目,了解一下quarkus的使用吧
 
 ![后台](1658566102962.jpg)
 
