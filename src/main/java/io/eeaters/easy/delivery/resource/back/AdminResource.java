@@ -6,6 +6,7 @@ import io.eeaters.easy.delivery.entity.model.ChannelAccount;
 import io.eeaters.easy.delivery.entity.model.User;
 import io.eeaters.easy.delivery.entity.view.AdminUserLogin;
 import io.eeaters.easy.delivery.entity.view.BaseResponse;
+import io.eeaters.easy.delivery.enums.ChannelEnum;
 import io.eeaters.easy.delivery.exception.LogicException;
 import io.eeaters.easy.delivery.util.RedisKeyUtils;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
@@ -41,7 +42,6 @@ public class AdminResource {
     @POST
     @Path("/doLogin")
     public BaseResponse<String> login(@Valid AdminUserLogin userLogin) throws Exception {
-        System.out.println("userLogin = " + userLogin);
         if ("admin".equals(userLogin.getUserName()) && "admin".equals(userLogin.getPassword())) {
             String token = UUID.randomUUID().toString();
             User admin = new User();
@@ -91,29 +91,39 @@ public class AdminResource {
 
     @GET
     @Path("channelAddPage")
-    public TemplateInstance channelAddPage(@QueryParam("channelId") Long channelId) {
-        if (channelId == null) {
-            return channelAdd.instance();
-        }else{
-            ChannelAccount account = ChannelAccount.findById(channelId);
-            return channelAdd.data("account", account);
-        }
+    public TemplateInstance channelAddPage() {
+       return channelAdd.data("channels", ChannelEnum.values());
+    }
+
+    @Inject
+    @Location("back/channelUpdate")
+    Template channelUpdate;
+    @GET
+    @Path("channelUpdatePage")
+    public TemplateInstance channelUpdate(@QueryParam("channelId") Long channelId) {
+        TemplateInstance channels = channelUpdate.data("channels", ChannelEnum.values());
+        ChannelAccount account = ChannelAccount.findById(channelId);
+        return channels.data("account", account);
     }
 
     @POST
     @Path("channelAdd")
     @Transactional
     public BaseResponse<Long> channelAdd(ChannelAccount channelAccount) {
+         String channel1 = channelAccount.getChannel();
+        channelAccount.setName(ChannelEnum.channelName(channel1));
         if (channelAccount.getId() != null) {
             ChannelAccount account = ChannelAccount.findById(channelAccount.getId());
-            account.setChannel(channelAccount.getChannel());
             account.setAppKey(channelAccount.getAppKey());
             account.setAppSecret(channelAccount.getAppSecret());
             account.setAppToken(channelAccount.getAppToken());
-            account.setName(channelAccount.getName());
             account.setUpdateUser(UserThreadLocal.getUser().getUserName());
             return BaseResponse.success(account.getId());
         }else{
+            ChannelAccount channel2 = ChannelAccount.find("channel", channelAccount.getChannel()).firstResult();
+            if (channel2 != null) {
+                throw new LogicException("该渠道已存在账号");
+            }
             channelAccount.persistAndFlush();
             return BaseResponse.success(channelAccount.getId());
         }

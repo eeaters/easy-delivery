@@ -8,7 +8,6 @@
             <thead>
             <tr>
                 <th>渠道id</th>
-                <th>渠道简称</th>
                 <th>渠道名称</th>
                 <th>秘钥Key</th>
                 <th>API秘钥</th>
@@ -21,14 +20,13 @@
             {#for l in list}
                 <tr>
                 <td>{l.id}</td>
-                <td>{l.channel}</td>
                 <td>{l.name}</td>
                 <td>{l.appKey}</td>
                 <td>{l.appSecret} </td>
                 <td>{l.appToken} </td>
                 <td>
                     <input type="hidden" value="{l.id}">
-                    <a onclick="channelAddPage(this)" href="javascript:void(0)">查看</a>
+                    <a onclick="channelUpdatePage(this)" href="javascript:void(0)">编辑</a>
                 </td>
                 </tr>
             {/for}

@@ -6,9 +6,10 @@ public enum ChannelEnum {
     SHUNFENG("shunfeng", "顺丰"),
     MEITUAN("meituan", "美团"),
     FENGNIAO("fengniao", "蜂鸟"),
-
-    SHANSONG("shansong","闪送")
-
+    SHANSONG("shansong","闪送"),
+    XIAKESONG( "xiakesong", "侠客送"),
+    CANDAO("candao", "餐道"),
+    DINGDING("dingding", "叮叮"),
     ;
     private String shortName;
 
