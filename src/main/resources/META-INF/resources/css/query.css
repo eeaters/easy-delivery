@@ -62,6 +62,12 @@ table th,
 table td{
     border: 1px solid #ebeef5;
 }
+
+.table-two th ,
+.table-two td{
+    width: 50%;
+}
+
 .table-four th ,
 .table-four td{
     width: 24%;

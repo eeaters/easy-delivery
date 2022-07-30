@@ -15,9 +15,15 @@
 
 ## 项目启动
 
-### 本地启动
+### Main方法启动
+
+`io.eeaters.easy.delivery.resource.QuarkusApplication`
+
+### 命令行利用maven进行启动
 
 ```shell script
+mvn quarkus:dev
+或
 ./mvnw compile quarkus:dev
 ```
 
@@ -26,7 +32,7 @@ jar启动:
 ```shell script
 mvn clean package -U -Dquarkus.package.type=uber-jar
 ```
-然后再target下java -jar 启动项目(没权限就加sudo)
+然后再target下java -jar 启动项目(没权限就sudo)
 
 ## 后台功能
 - localhost:9000/management/login 

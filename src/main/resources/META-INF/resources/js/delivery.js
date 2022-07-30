@@ -41,7 +41,6 @@ function strategySave() {
         "id": document.getElementById("strategyId").value,
         "name": document.getElementById("strategyName").value,
         "desc": document.getElementById("strategyDesc").value,
-        "type": document.querySelector('input[name="strategyType"]:checked').value,
         "timeoutPeriod": document.getElementById("strategy-timeout-period").value,
         "channels": channelIds
     }

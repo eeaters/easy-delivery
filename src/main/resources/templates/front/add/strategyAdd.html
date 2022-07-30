@@ -1,6 +1,6 @@
 <div class="detail" style="width: 900px;margin: 0 auto;">
     <div class="detail-group">
-        <div class="div-title"> 方案信息 </div>
+        <div class="div-title"> 基础信息 </div>
         <div class="layui-form-item layui-form-text" style="width:750px">
             <label class="layui-form-label">方案名称</label>
             <div class="layui-input-block">
@@ -17,28 +17,7 @@
                 <textarea placeholder="最多50个字" class="layui-textarea" id="strategyDesc"> {#if strategy??}{strategy.desc}{/if}</textarea>
             </div>
         </div>
-        <div class="layui-form-item layui-form-text" style="width:750px">
-            <label class="layui-form-label">配送类型</label>
 
-            <div class="layui-input-block search-wrapper">
-
-                <label class="btn-space"> 默认排序: </label>
-                <input type="radio" name="strategyType" value="1"
-                       {#if !strategy?? || strategy.type == 1}
-                       checked
-                       {/if}>&nbsp;
-                <label class="btn-space"> 价格优先: </label>
-                <input type="radio" name="strategyType" value="2"
-                       {#if strategy?? && strategy.type == 2}
-                       checked
-                       {/if}>&nbsp;&nbsp;&nbsp;
-                <label class="btn-space"> 距离优先: </label>
-                <input type="radio" name="strategyType" value="3"
-                       {#if strategy?? && strategy.type == 3}
-                       checked
-                       {/if}>
-            </div>
-        </div>
         <div class="layui-form-item layui-form-text" style="width:750px">
             <label class="layui-form-label">超时间隔</label>
             <div class="layui-input-block search-wrapper">
@@ -53,16 +32,23 @@
     </div>
 
     <div class="detail-group">
-        <div class="div-title"> 三方渠道绑定 </div>
+        <div class="div-title"> 渠道绑定 </div>
         <div class="layui-input-block back-wrapper" style="margin: 15px auto;">
             <button  onclick="popChannel()" style=" margin-left: 30px;float: left;">新增渠道</button>
         </div>
-        <div id="channel-wrapper" style="width: 900px; ">
-            <table id = "channel-table">
+
+        <div id="channel-wrapper" style="width: 600px; ">
+            <table id = "channel-table" style="table-layout: fixed;word-wrap:break-word;margin-left: 30px">
+
                 <thead>
                 <tr>
-                    <th>渠道名称</th>
-                    <th>操作</th>
+                    <th style="width: 70%">
+                        <span> 渠道名称 </span>
+                    </th>
+
+                    <th>
+                        <span> 操作 </span>
+                    </th>
                 </tr>
                 </thead>
 
@@ -71,14 +57,19 @@
                     {#for mapping in channelMapping}
                         <tr>
                             <td>
-                                <select name="channelId">
-                                    {#for channel in channelList}
-                                        <option value="{channel.id}"  {#if channel.id == mapping.channelId} selected {/if}> {channel.name}</option>
-                                    {/for}
-                                </select>
+                                <div>
+                                    <select name="channelId">
+                                        {#for channel in channelList}
+                                            <option value="{channel.id}"  {#if channel.id == mapping.channelId} selected {/if}> {channel.name}</option>
+                                        {/for}
+                                    </select>
+                                </div>
                             </td>
+
                             <td>
-                                <a href="javascript:void(0)" onclick="deleteTr(this)">删除</a>
+                                <div>
+                                    <a href="javascript:void(0)" onclick="deleteTr(this)">删除</a>
+                                </div>
                             </td>
                         </tr>
                     {/for}
