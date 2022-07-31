@@ -22,6 +22,6 @@ function popChannel(){
 }
 
 function deleteTr(obj) {
-     var trnode = obj.parentNode.parentNode;
+     var trnode = obj.parentNode.parentNode.parentNode;
      trnode.parentNode.removeChild(trnode);
 }

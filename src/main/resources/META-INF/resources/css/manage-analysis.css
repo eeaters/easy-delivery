@@ -1,0 +1,16 @@
+.select-container {
+    background-color: #ff0;
+}
+.section{
+    width:400px;
+    height: 200px;
+    padding: 20px;
+    text-align: center;
+    margin: 20px 20px;
+    font-size: 15px;
+    border: 1px solid #ebeef5;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
+    float:left;
+}

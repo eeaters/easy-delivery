@@ -55,6 +55,7 @@ public class DeliveryResource {
             sql += " and store_id = :storeId";
             parameters.and("storeId", storeId);
         }
+        sql += " order by create_time desc";
         List<Delivery> list = Delivery.find(sql, parameters).list();
         return this.delivery.data("list", list)
                 .data("orderId", orderId)
@@ -96,11 +97,13 @@ public class DeliveryResource {
     @Path("add")
     @Transactional
     public BaseResponse<Long> add(Delivery delivery) {
+
+
+        StoreStrategyMapping strategyMapping = StoreStrategyMapping.find("storeId", delivery.getStoreId()).firstResult();
+
         delivery.setUserId(UserThreadLocal.getUser().getId());
         completeDelivery(delivery);
         delivery.persistAndFlush();
-
-        StoreStrategyMapping strategyMapping = StoreStrategyMapping.find("storeId", delivery.getStoreId()).firstResult();
 
         if (strategyMapping == null) {
             DeliveryDetail deliveryDetail = new DeliveryDetail();
@@ -123,6 +126,8 @@ public class DeliveryResource {
             return BaseResponse.success(delivery.getId());
         }
 
+        String channel = null;
+        int status = 1;
         for (StrategyChannelMapping mapping : mappings) {
             Random random = new Random();
             ChannelAccount channelAccount = ChannelAccount.findById(mapping.getChannelId());
@@ -134,6 +139,7 @@ public class DeliveryResource {
                 deliveryDetail.setChannel(channelAccount.getChannel());
                 deliveryDetail.setCreateTime(LocalDateTime.now());
                 deliveryDetail.persistAndFlush();
+                status = StatusEnum.REJECT.getCode();
             }else{
                 DeliveryDetail deliveryDetail = new DeliveryDetail();
                 deliveryDetail.setDeliveryId(delivery.getId());
@@ -151,8 +157,15 @@ public class DeliveryResource {
                 deliveryDetail2.setRiderName(rider.getName());
                 deliveryDetail2.setRiderPhone(rider.getPhone());
                 deliveryDetail2.persistAndFlush();
+                channel = channelAccount.getChannel();
+                status = StatusEnum.DELIVERING.getCode();
                 break;
             }
+        }
+        if (channel != null) {
+            delivery.setChannel(channel);
+            delivery.setStatus(status);
+            delivery.persist();
         }
         return BaseResponse.success(delivery.getId());
 
@@ -163,7 +176,7 @@ public class DeliveryResource {
         delivery.setIsPre((byte)0);
         delivery.setTipFeePrice(0);
         delivery.setDeliveryFeePrice(0);
-        delivery.setStatus(1);
+        delivery.setStatus(0);
     }
 
 

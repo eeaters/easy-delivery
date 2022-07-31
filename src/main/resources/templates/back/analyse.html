@@ -1,0 +1,54 @@
+
+<div class="table-wrapper">
+    <section class="select-wrapper clearfix">
+        <div class="filter">
+            <p>
+                筛选器
+            </p>
+            <div  style="margin-left: 2em">
+                <label>查询区间</label>
+                <select id="analyse-range">
+                    <option value="1" {#if range?? && range == 1} selected {/if}>1 天</option>
+                    <option value="2" {#if range?? && range == 2} selected {/if}>1 周</option>
+                    <option value="3" {#if range?? && range == 3} selected {/if}>1 月</option>
+                </select>
+
+                <button onclick="analyseSearch()"> 查询 </button>
+            </div>
+        </div>
+    </section>
+
+    <div>
+        <div class="section">
+            <label style="font-weight:800"> 运单数据总览</label>
+            <div>
+                <p style="margin-left=2em">
+        总订单量: {all.all} <br/>
+        完成订单量: {all.complete} <br/>
+        配送中订单量: {all.delivering}<br/>
+                </p>
+            </div>
+        </div>
+
+        {#for channel in channelList}
+            <div class="section">
+                <label style="font-weight:800">{channel.channelName} - 数据总览</label>
+                <div>
+                    <p style="margin-left=2em">
+                        总订单量: {channel.all}
+                    </p>
+                    <p style="margin-left=2em">
+                        完成订单量:  {channel.complete}
+                    </p>
+                    <p style="margin-left=2em">
+                        配送中订单量:  {channel.delivering}
+                    </p>
+                </div>
+            </div>
+        {/for}
+
+
+    </div>
+
+</div>
+

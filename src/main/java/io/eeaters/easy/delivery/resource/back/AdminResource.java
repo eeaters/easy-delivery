@@ -9,7 +9,6 @@ import io.eeaters.easy.delivery.entity.view.BaseResponse;
 import io.eeaters.easy.delivery.enums.ChannelEnum;
 import io.eeaters.easy.delivery.exception.LogicException;
 import io.eeaters.easy.delivery.util.RedisKeyUtils;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
@@ -127,8 +126,6 @@ public class AdminResource {
             channelAccount.persistAndFlush();
             return BaseResponse.success(channelAccount.getId());
         }
-
-
     }
 
 }

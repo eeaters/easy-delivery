@@ -54,6 +54,9 @@ public class Delivery extends PanacheEntityBase {
 
     private Integer status;
 
+    private String channel;
+
+
     @Column(name = "create_time", insertable = false, updatable = false)
     private LocalDateTime createTime;
 
@@ -216,5 +219,13 @@ public class Delivery extends PanacheEntityBase {
 
     public void setDestPhone(String destPhone) {
         this.destPhone = destPhone;
+    }
+
+    public String getChannel() {
+        return channel;
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 }

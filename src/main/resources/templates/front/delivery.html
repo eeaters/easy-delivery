@@ -69,11 +69,20 @@
                 <td>{l.destLongitude} , {l.destLatitude}</td>
                 <td>{l.destAddress} </td>
                 <td>{l.destUser} : {l.destPhone} </td>
+                {#if l.status == -1}
+                    <td>已拒单</td>
+                {/if}
                 {#if l.status == 0}
                     <td>已接单</td>
                 {/if}
                 {#if l.status == 1}
                     <td>已推送</td>
+                {/if}
+                {#if l.status == 2}
+                    <td>已分配骑手</td>
+                {/if}
+                {#if l.status == 3}
+                    <td>配送中</td>
                 {/if}
 
                 <td>

@@ -1,6 +1,15 @@
 function channelList() {
     get('management/channel')
 }
+function analysePage(){
+    get('management/analysis/page?range=1')
+}
+
+function analyseSearch() {
+    let rangeEle = document.getElementById("analyse-range");
+    let rangeVal = rangeEle.options[rangeEle.selectedIndex].value;
+    get('management/analysis/page?range=' + rangeVal);
+}
 
 
 function channelUpdatePage(obj){
